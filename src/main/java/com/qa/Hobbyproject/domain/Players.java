@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 
 @Entity
 public class Players {
@@ -24,6 +26,9 @@ public class Players {
 	
 	@Column
 	private String currentTeam;
+	
+	@ManyToOne
+	private FantasyTeams fTeams;
 
 	public Players() {
 		super();

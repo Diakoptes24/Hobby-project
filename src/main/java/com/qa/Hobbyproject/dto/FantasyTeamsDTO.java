@@ -2,7 +2,6 @@ package com.qa.Hobbyproject.dto;
 
 import java.util.List;
 
-import com.qa.Hobbyproject.domain.Players;
 
 public class FantasyTeamsDTO {
 
@@ -10,24 +9,25 @@ public class FantasyTeamsDTO {
 	
 	private String teamName;
 	
-	private List<Players> mainTank;
+	private List<PlayersDTO> mainTank;
 	
-	private List<Players> offTank;
+	private List<PlayersDTO> offTank;
 	
-	private List<Players> hitscanDPS;
+	private List<PlayersDTO> hitscanDPS;
 	
-	private List<Players> flexDPS;
+	private List<PlayersDTO> flexDPS;
 	
-	private List<Players> mainSupport;
+	private List<PlayersDTO> mainSupport;
 	
-	private List<Players> flexSupport;
+	private List<PlayersDTO> flexSupport;
 
 	public FantasyTeamsDTO() {
 		super();
 	}
 
-	public FantasyTeamsDTO(Integer teamId, String teamName, List<Players> mainTank, List<Players> offTank,
-			List<Players> hitscanDPS, List<Players> flexDPS, List<Players> mainSupport, List<Players> flexSupport) {
+	public FantasyTeamsDTO(Integer teamId, String teamName, List<PlayersDTO> mainTank, List<PlayersDTO> offTank,
+			List<PlayersDTO> hitscanDPS, List<PlayersDTO> flexDPS, List<PlayersDTO> mainSupport,
+			List<PlayersDTO> flexSupport) {
 		super();
 		this.teamId = teamId;
 		this.teamName = teamName;
@@ -55,53 +55,55 @@ public class FantasyTeamsDTO {
 		this.teamName = teamName;
 	}
 
-	public List<Players> getMainTank() {
+	public List<PlayersDTO> getMainTank() {
 		return mainTank;
 	}
 
-	public void setMainTank(List<Players> mainTank) {
+	public void setMainTank(List<PlayersDTO> mainTank) {
 		this.mainTank = mainTank;
 	}
 
-	public List<Players> getOffTank() {
+	public List<PlayersDTO> getOffTank() {
 		return offTank;
 	}
 
-	public void setOffTank(List<Players> offTank) {
+	public void setOffTank(List<PlayersDTO> offTank) {
 		this.offTank = offTank;
 	}
 
-	public List<Players> getHitscanDPS() {
+	public List<PlayersDTO> getHitscanDPS() {
 		return hitscanDPS;
 	}
 
-	public void setHitscanDPS(List<Players> hitscanDPS) {
+	public void setHitscanDPS(List<PlayersDTO> hitscanDPS) {
 		this.hitscanDPS = hitscanDPS;
 	}
 
-	public List<Players> getFlexDPS() {
+	public List<PlayersDTO> getFlexDPS() {
 		return flexDPS;
 	}
 
-	public void setFlexDPS(List<Players> flexDPS) {
+	public void setFlexDPS(List<PlayersDTO> flexDPS) {
 		this.flexDPS = flexDPS;
 	}
 
-	public List<Players> getMainSupport() {
+	public List<PlayersDTO> getMainSupport() {
 		return mainSupport;
 	}
 
-	public void setMainSupport(List<Players> mainSupport) {
+	public void setMainSupport(List<PlayersDTO> mainSupport) {
 		this.mainSupport = mainSupport;
 	}
 
-	public List<Players> getFlexSupport() {
+	public List<PlayersDTO> getFlexSupport() {
 		return flexSupport;
 	}
 
-	public void setFlexSupport(List<Players> flexSupport) {
+	public void setFlexSupport(List<PlayersDTO> flexSupport) {
 		this.flexSupport = flexSupport;
 	}
+
+	
 	
 	
 }
