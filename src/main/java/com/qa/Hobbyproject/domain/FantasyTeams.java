@@ -1,10 +1,15 @@
 package com.qa.Hobbyproject.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class FantasyTeams {
@@ -16,30 +21,37 @@ public class FantasyTeams {
 	@Column
 	private String teamName;
 
-	@Column
-	private String mainTank;
+	//Can do the roles like below with Players in list and variable named after each role like how it is now, I think
+	@OneToMany(mappedBy = "fantasyTeams")
+	@JsonIgnore
+	private List<Players> mainTank;
 	
-	@Column
-	private String offTank;
+	@OneToMany(mappedBy = "fantasyTeams")
+	@JsonIgnore
+	private List<Players> offTank;
 	
-	@Column
-	private String hitscanDPS;
+	@OneToMany(mappedBy = "fantasyTeams")
+	@JsonIgnore
+	private List<Players> hitscanDPS;
 	
-	@Column
-	private String flexDPS;
+	@OneToMany(mappedBy = "fantasyTeams")
+	@JsonIgnore
+	private List<Players> flexDPS;
 	
-	@Column
-	private String mainSupport;
+	@OneToMany(mappedBy = "fantasyTeams")
+	@JsonIgnore
+	private List<Players> mainSupport;
 	
-	@Column
-	private String flexSupport;
+	@OneToMany(mappedBy = "fantasyTeams")
+	@JsonIgnore
+	private List<Players> flexSupport;
 
 	public FantasyTeams() {
 		super();
 	}
 
-	public FantasyTeams(Integer teamId, String teamName, String mainTank, String offTank, String hitscanDPS,
-			String flexDPS, String mainSupport, String flexSupport) {
+	public FantasyTeams(Integer teamId, String teamName, List<Players> mainTank, List<Players> offTank,
+			List<Players> hitscanDPS, List<Players> flexDPS, List<Players> mainSupport, List<Players> flexSupport) {
 		super();
 		this.teamId = teamId;
 		this.teamName = teamName;
@@ -67,51 +79,51 @@ public class FantasyTeams {
 		this.teamName = teamName;
 	}
 
-	public String getMainTank() {
+	public List<Players> getMainTank() {
 		return mainTank;
 	}
 
-	public void setMainTank(String mainTank) {
+	public void setMainTank(List<Players> mainTank) {
 		this.mainTank = mainTank;
 	}
 
-	public String getOffTank() {
+	public List<Players> getOffTank() {
 		return offTank;
 	}
 
-	public void setOffTank(String offTank) {
+	public void setOffTank(List<Players> offTank) {
 		this.offTank = offTank;
 	}
 
-	public String getHitscanDPS() {
+	public List<Players> getHitscanDPS() {
 		return hitscanDPS;
 	}
 
-	public void setHitscanDPS(String hitscanDPS) {
+	public void setHitscanDPS(List<Players> hitscanDPS) {
 		this.hitscanDPS = hitscanDPS;
 	}
 
-	public String getFlexDPS() {
+	public List<Players> getFlexDPS() {
 		return flexDPS;
 	}
 
-	public void setFlexDPS(String flexDPS) {
+	public void setFlexDPS(List<Players> flexDPS) {
 		this.flexDPS = flexDPS;
 	}
 
-	public String getMainSupport() {
+	public List<Players> getMainSupport() {
 		return mainSupport;
 	}
 
-	public void setMainSupport(String mainSupport) {
+	public void setMainSupport(List<Players> mainSupport) {
 		this.mainSupport = mainSupport;
 	}
 
-	public String getFlexSupport() {
+	public List<Players> getFlexSupport() {
 		return flexSupport;
 	}
 
-	public void setFlexSupport(String flexSupport) {
+	public void setFlexSupport(List<Players> flexSupport) {
 		this.flexSupport = flexSupport;
 	}
 
@@ -188,6 +200,26 @@ public class FantasyTeams {
 			return false;
 		return true;
 	}
+	
+	
+//	@Column
+//	private String mainTank;
+//	
+//	@Column
+//	private String offTank;
+//	
+//	@Column
+//	private String hitscanDPS;
+//	
+//	@Column
+//	private String flexDPS;
+//	
+//	@Column
+//	private String mainSupport;
+//	
+//	@Column
+//	private String flexSupport;
+
 	
 	
 }
