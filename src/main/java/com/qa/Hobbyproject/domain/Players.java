@@ -28,7 +28,7 @@ public class Players {
 	private String currentTeam;
 	
 	@ManyToOne
-	private FantasyTeams fTeams;
+	private FantasyTeams fantasyTeams;
 
 	public Players() {
 		super();

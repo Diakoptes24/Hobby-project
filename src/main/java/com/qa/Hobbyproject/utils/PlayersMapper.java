@@ -1,9 +1,11 @@
 package com.qa.Hobbyproject.utils;
 
+import org.springframework.stereotype.Service;
+
 import com.qa.Hobbyproject.domain.Players;
 import com.qa.Hobbyproject.dto.PlayersDTO;
 
-
+@Service
 public class PlayersMapper implements Mapper<Players, PlayersDTO>{
 
 	@Override

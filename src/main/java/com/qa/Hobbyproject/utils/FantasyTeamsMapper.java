@@ -3,12 +3,14 @@ package com.qa.Hobbyproject.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.qa.Hobbyproject.domain.FantasyTeams;
 import com.qa.Hobbyproject.dto.FantasyTeamsDTO;
 import com.qa.Hobbyproject.domain.Players;
 import com.qa.Hobbyproject.dto.PlayersDTO;
 
-
+@Service
 public class FantasyTeamsMapper implements Mapper<FantasyTeams, FantasyTeamsDTO> {
 	
 	private PlayersMapper playersMapper;
@@ -26,6 +28,7 @@ public class FantasyTeamsMapper implements Mapper<FantasyTeams, FantasyTeamsDTO>
 		
 		dto.setTeamId(fTeams.getTeamId());
 		dto.setTeamName(fTeams.getTeamName());
+		
 		List<PlayersDTO> mainTank = new ArrayList<>();
 		for (Players players : fTeams.getMainTank()) {
 			mainTank.add(this.playersMapper.mapToDTO(players));
