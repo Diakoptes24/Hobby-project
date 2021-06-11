@@ -11,7 +11,7 @@ public class Players {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer playerId;
+	private Long playerId;
 	
 	@Column
 	private String playerIGN;
@@ -29,7 +29,7 @@ public class Players {
 		super();
 	}
 
-	public Players(Integer playerId, String playerIGN, String role, String subRole, String currentTeam) {
+	public Players(Long playerId, String playerIGN, String role, String subRole, String currentTeam) {
 		super();
 		this.playerId = playerId;
 		this.playerIGN = playerIGN;
@@ -38,11 +38,11 @@ public class Players {
 		this.currentTeam = currentTeam;
 	}
 
-	public Integer getPlayerId() {
+	public Long getPlayerId() {
 		return playerId;
 	}
 
-	public void setPlayerId(Integer playerId) {
+	public void setPlayerId(Long playerId) {
 		this.playerId = playerId;
 	}
 
