@@ -1,33 +1,31 @@
 package com.qa.Hobbyproject.dto;
 
-import java.util.List;
 
 
 public class FantasyTeamsDTO {
 
-	private Integer teamId;
+	private Long teamId;
 	
 	private String teamName;
 	
-	private List<PlayersDTO> mainTank;
+	private String mainTank;
 	
-	private List<PlayersDTO> offTank;
+	private String offTank;
 	
-	private List<PlayersDTO> hitscanDPS;
+	private String hitscanDPS;
 	
-	private List<PlayersDTO> flexDPS;
+	private String flexDPS;
 	
-	private List<PlayersDTO> mainSupport;
+	private String mainSupport;
 	
-	private List<PlayersDTO> flexSupport;
+	private String flexSupport;
 
 	public FantasyTeamsDTO() {
 		super();
 	}
 
-	public FantasyTeamsDTO(Integer teamId, String teamName, List<PlayersDTO> mainTank, List<PlayersDTO> offTank,
-			List<PlayersDTO> hitscanDPS, List<PlayersDTO> flexDPS, List<PlayersDTO> mainSupport,
-			List<PlayersDTO> flexSupport) {
+	public FantasyTeamsDTO(Long teamId, String teamName, String mainTank, String offTank, String hitscanDPS,
+			String flexDPS, String mainSupport, String flexSupport) {
 		super();
 		this.teamId = teamId;
 		this.teamName = teamName;
@@ -39,11 +37,11 @@ public class FantasyTeamsDTO {
 		this.flexSupport = flexSupport;
 	}
 
-	public Integer getTeamId() {
+	public Long getTeamId() {
 		return teamId;
 	}
 
-	public void setTeamId(Integer teamId) {
+	public void setTeamId(Long teamId) {
 		this.teamId = teamId;
 	}
 
@@ -55,53 +53,55 @@ public class FantasyTeamsDTO {
 		this.teamName = teamName;
 	}
 
-	public List<PlayersDTO> getMainTank() {
+	public String getMainTank() {
 		return mainTank;
 	}
 
-	public void setMainTank(List<PlayersDTO> mainTank) {
+	public void setMainTank(String mainTank) {
 		this.mainTank = mainTank;
 	}
 
-	public List<PlayersDTO> getOffTank() {
+	public String getOffTank() {
 		return offTank;
 	}
 
-	public void setOffTank(List<PlayersDTO> offTank) {
+	public void setOffTank(String offTank) {
 		this.offTank = offTank;
 	}
 
-	public List<PlayersDTO> getHitscanDPS() {
+	public String getHitscanDPS() {
 		return hitscanDPS;
 	}
 
-	public void setHitscanDPS(List<PlayersDTO> hitscanDPS) {
+	public void setHitscanDPS(String hitscanDPS) {
 		this.hitscanDPS = hitscanDPS;
 	}
 
-	public List<PlayersDTO> getFlexDPS() {
+	public String getFlexDPS() {
 		return flexDPS;
 	}
 
-	public void setFlexDPS(List<PlayersDTO> flexDPS) {
+	public void setFlexDPS(String flexDPS) {
 		this.flexDPS = flexDPS;
 	}
 
-	public List<PlayersDTO> getMainSupport() {
+	public String getMainSupport() {
 		return mainSupport;
 	}
 
-	public void setMainSupport(List<PlayersDTO> mainSupport) {
+	public void setMainSupport(String mainSupport) {
 		this.mainSupport = mainSupport;
 	}
 
-	public List<PlayersDTO> getFlexSupport() {
+	public String getFlexSupport() {
 		return flexSupport;
 	}
 
-	public void setFlexSupport(List<PlayersDTO> flexSupport) {
+	public void setFlexSupport(String flexSupport) {
 		this.flexSupport = flexSupport;
 	}
+
+	
 
 	
 	

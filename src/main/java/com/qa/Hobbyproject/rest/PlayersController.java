@@ -27,5 +27,12 @@ public class PlayersController {
 		return this.pService.createPlayer(players);
 	}
 	
+//	@GetMapping("/populate")
+//	public String addOptions(Players players, Model model){
+//	    model.addAttribute("players", PlayersRepo.findBySubRoleIgnoreCase(getSubRole()));
+//	    return "addOptions";
+//	}
 
+	
+	
 }

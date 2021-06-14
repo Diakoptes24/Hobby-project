@@ -15,23 +15,51 @@
     <h1>
         Build your own fantasy team!
     </h1>
-    <form method="post" action="">
-        Please enter the name of your fantasy team:
-        <input type="text" name="teamName" />
-
-        <div class="form-group blu-margin">
-            <select class="form-control" th:field="${players.opeId}" id="dropPlayers">
+    <main class="container">
+        <form id="createTeam">
+            <fieldset>
+                Please enter the name of your fantasy team:
+                <input type="text" name="teamName" />
+                <br>
+                <label for="mainTank"> Please enter your choice of Main Tank:</label>
+                <input id="mainTank" type="text">
+                <br>
+                <label for="offTank"> Please enter your choice of Off Tank:</label>
+                <input id="offTank" type="text">
+                <br>
+                <label for="hitscanDPS"> Please enter your choice of Hitscan DPS:</label>
+                <input id="hitscanDPS" type="text">
+                <br>
+                <label for="flexDPS"> Please enter your choice of Flex DPS:</label>
+                <input id="flexDPS" type="text">
+                <br>
+                <label for="mainSupport"> Please enter your choice of Main Support:</label>
+                <input id="mainSupport" type="text">
+                <br>
+                <label for="flexSupport"> Please enter your choice of Flex Support:</label>
+                <input id="flexSupport" type="text">
+                <br>
+                <button type="reset" class="btn btn-primary">Clear</button>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </fieldset>
+            <!-- <div class="form-group blu-margin">
+            <select class="form-control" th:field="${players.playerID}" id="dropPlayers">
                 <option value="0">select player</option>
                 <option th:each="players : ${players}" th:value="${players.playerID}" th:text="${players.playerIGN}">
                 </option>
             </select>
-        </div>
+        </div> -->
 
-    </form>
+        </form>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
-        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+            integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="index.js"></script>
+    </main>
 </body>
 
 </html>

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -16,42 +17,46 @@ public class FantasyTeams {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer teamId;
+	private Long teamId;
 	
 	@Column
 	private String teamName;
 
 	//Can do the roles like below with Players in list and variable named after each role like how it is now, I think
-	@OneToMany(mappedBy = "fantasyTeams")
-	@JsonIgnore
-	private List<Players> mainTank;
+//	@OneToOne(mappedBy = "fantasyTeams")
+//	@JsonIgnore
+	private String mainTank;
 	
-	@OneToMany(mappedBy = "fantasyTeams")
-	@JsonIgnore
-	private List<Players> offTank;
+//	@OneToOne(mappedBy = "fantasyTeams")
+//	@JsonIgnore
+	private String offTank;
 	
-	@OneToMany(mappedBy = "fantasyTeams")
-	@JsonIgnore
-	private List<Players> hitscanDPS;
+//	@OneToOne(mappedBy = "fantasyTeams")
+//	@JsonIgnore
+	private String hitscanDPS;
 	
-	@OneToMany(mappedBy = "fantasyTeams")
-	@JsonIgnore
-	private List<Players> flexDPS;
+//	@OneToOne(mappedBy = "fantasyTeams")
+//	@JsonIgnore
+	private String flexDPS;
 	
-	@OneToMany(mappedBy = "fantasyTeams")
-	@JsonIgnore
-	private List<Players> mainSupport;
+//	@OneToOne(mappedBy = "fantasyTeams")
+//	@JsonIgnore
+	private String mainSupport;
 	
-	@OneToMany(mappedBy = "fantasyTeams")
-	@JsonIgnore
-	private List<Players> flexSupport;
+//	@OneToOne(mappedBy = "fantasyTeams")
+//	@JsonIgnore
+	private String flexSupport;
+	
+	@OneToOne(mappedBy = "fantasyTeams")
+	private Players players;
 
 	public FantasyTeams() {
 		super();
 	}
 
-	public FantasyTeams(Integer teamId, String teamName, List<Players> mainTank, List<Players> offTank,
-			List<Players> hitscanDPS, List<Players> flexDPS, List<Players> mainSupport, List<Players> flexSupport) {
+	
+public FantasyTeams(Long teamId, String teamName, String mainTank, String offTank, String hitscanDPS,
+			String flexDPS, String mainSupport, String flexSupport) {
 		super();
 		this.teamId = teamId;
 		this.teamName = teamName;
@@ -63,69 +68,176 @@ public class FantasyTeams {
 		this.flexSupport = flexSupport;
 	}
 
-	public Integer getTeamId() {
-		return teamId;
-	}
 
-	public void setTeamId(Integer teamId) {
-		this.teamId = teamId;
-	}
+//	public FantasyTeams(Long teamId, String teamName, List<Players> mainTank, List<Players> offTank,
+//			List<Players> hitscanDPS, List<Players> flexDPS, List<Players> mainSupport, List<Players> flexSupport) {
+//		super();
+//		this.teamId = teamId;
+//		this.teamName = teamName;
+//		this.mainTank = mainTank;
+//		this.offTank = offTank;
+//		this.hitscanDPS = hitscanDPS;
+//		this.flexDPS = flexDPS;
+//		this.mainSupport = mainSupport;
+//		this.flexSupport = flexSupport;
+//	}
+//
+//	public Long getTeamId() {
+//		return teamId;
+//	}
+//
+//	public void setTeamId(Long teamId) {
+//		this.teamId = teamId;
+//	}
+//
+//	public String getTeamName() {
+//		return teamName;
+//	}
+//
+//	public void setTeamName(String teamName) {
+//		this.teamName = teamName;
+//	}
+//
+//	public List<Players> getMainTank() {
+//		return mainTank;
+//	}
+//
+//	public void setMainTank(List<Players> mainTank) {
+//		this.mainTank = mainTank;
+//	}
+//
+//	public List<Players> getOffTank() {
+//		return offTank;
+//	}
+//
+//	public void setOffTank(List<Players> offTank) {
+//		this.offTank = offTank;
+//	}
+//
+//	public List<Players> getHitscanDPS() {
+//		return hitscanDPS;
+//	}
+//
+//	public void setHitscanDPS(List<Players> hitscanDPS) {
+//		this.hitscanDPS = hitscanDPS;
+//	}
+//
+//	public List<Players> getFlexDPS() {
+//		return flexDPS;
+//	}
+//
+//	public void setFlexDPS(List<Players> flexDPS) {
+//		this.flexDPS = flexDPS;
+//	}
+//
+//	public List<Players> getMainSupport() {
+//		return mainSupport;
+//	}
+//
+//	public void setMainSupport(List<Players> mainSupport) {
+//		this.mainSupport = mainSupport;
+//	}
+//
+//	public List<Players> getFlexSupport() {
+//		return flexSupport;
+//	}
+//
+//	public void setFlexSupport(List<Players> flexSupport) {
+//		this.flexSupport = flexSupport;
+//	}
 
-	public String getTeamName() {
-		return teamName;
-	}
+	public FantasyTeams(String teamName, String mainTank, String offTank, String hitscanDPS, String flexDPS,
+		String mainSupport, String flexSupport) {
+	super();
+	this.teamName = teamName;
+	this.mainTank = mainTank;
+	this.offTank = offTank;
+	this.hitscanDPS = hitscanDPS;
+	this.flexDPS = flexDPS;
+	this.mainSupport = mainSupport;
+	this.flexSupport = flexSupport;
+}
 
-	public void setTeamName(String teamName) {
-		this.teamName = teamName;
-	}
 
-	public List<Players> getMainTank() {
-		return mainTank;
-	}
+	public Long getTeamId() {
+	return teamId;
+}
 
-	public void setMainTank(List<Players> mainTank) {
-		this.mainTank = mainTank;
-	}
 
-	public List<Players> getOffTank() {
-		return offTank;
-	}
+public void setTeamId(Long teamId) {
+	this.teamId = teamId;
+}
 
-	public void setOffTank(List<Players> offTank) {
-		this.offTank = offTank;
-	}
 
-	public List<Players> getHitscanDPS() {
-		return hitscanDPS;
-	}
+public String getTeamName() {
+	return teamName;
+}
 
-	public void setHitscanDPS(List<Players> hitscanDPS) {
-		this.hitscanDPS = hitscanDPS;
-	}
 
-	public List<Players> getFlexDPS() {
-		return flexDPS;
-	}
+public void setTeamName(String teamName) {
+	this.teamName = teamName;
+}
 
-	public void setFlexDPS(List<Players> flexDPS) {
-		this.flexDPS = flexDPS;
-	}
 
-	public List<Players> getMainSupport() {
-		return mainSupport;
-	}
+public String getMainTank() {
+	return mainTank;
+}
 
-	public void setMainSupport(List<Players> mainSupport) {
-		this.mainSupport = mainSupport;
-	}
 
-	public List<Players> getFlexSupport() {
-		return flexSupport;
-	}
+public void setMainTank(String mainTank) {
+	this.mainTank = mainTank;
+}
 
-	public void setFlexSupport(List<Players> flexSupport) {
-		this.flexSupport = flexSupport;
-	}
+
+public String getOffTank() {
+	return offTank;
+}
+
+
+public void setOffTank(String offTank) {
+	this.offTank = offTank;
+}
+
+
+public String getHitscanDPS() {
+	return hitscanDPS;
+}
+
+
+public void setHitscanDPS(String hitscanDPS) {
+	this.hitscanDPS = hitscanDPS;
+}
+
+
+public String getFlexDPS() {
+	return flexDPS;
+}
+
+
+public void setFlexDPS(String flexDPS) {
+	this.flexDPS = flexDPS;
+}
+
+
+public String getMainSupport() {
+	return mainSupport;
+}
+
+
+public void setMainSupport(String mainSupport) {
+	this.mainSupport = mainSupport;
+}
+
+
+public String getFlexSupport() {
+	return flexSupport;
+}
+
+
+public void setFlexSupport(String flexSupport) {
+	this.flexSupport = flexSupport;
+}
+
 
 	@Override
 	public String toString() {
@@ -200,6 +312,19 @@ public class FantasyTeams {
 			return false;
 		return true;
 	}
+
+
+	public Players getPlayers() {
+		return players;
+	}
+
+
+	public void setPlayers(Players players) {
+		this.players = players;
+	}
+
+
+	
 	
 	
 //	@Column
@@ -222,4 +347,7 @@ public class FantasyTeams {
 
 	
 	
+//	public Optional<List<Players>> getMainTank() {
+//		return Optional.ofNullable(mainTank);
+//	}
 }

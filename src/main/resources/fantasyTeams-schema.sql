@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS `fantasy_teams` CASCADE;
+CREATE TABLE fantasy_teams (
+    teamID BIGINT AUTO_INCREMENT,
+    teamName VARCHAR(255) NOT NULL,
+    mainTank VARCHAR(255) NOT NULL,
+    offTank VARCHAR(255) NOT NULL,
+    hitscanDPS VARCHAR(255) NOT NULL,
+    flexDPS VARCHAR(255) NOT NULL,
+    mainSupport VARCHAR(255) NOT NULL,
+    flexSupport VARCHAR(255) NOT NULL,
+    PRIMARY KEY (teamID)
+);

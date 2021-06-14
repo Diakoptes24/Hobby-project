@@ -1,11 +1,14 @@
 package com.qa.Hobbyproject.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -27,7 +30,8 @@ public class Players {
 	@Column
 	private String currentTeam;
 	
-	@ManyToOne
+	@OneToOne
+	@JoinColumn(name = "fantasy_teams_team_id", nullable = false)
 	private FantasyTeams fantasyTeams;
 
 	public Players() {
@@ -37,6 +41,16 @@ public class Players {
 	public Players(Long playerId, String playerIGN, String role, String subRole, String currentTeam) {
 		super();
 		this.playerId = playerId;
+		this.playerIGN = playerIGN;
+		this.role = role;
+		this.subRole = subRole;
+		this.currentTeam = currentTeam;
+	}
+	
+	
+	
+	public Players(String playerIGN, String role, String subRole, String currentTeam) {
+		super();
 		this.playerIGN = playerIGN;
 		this.role = role;
 		this.subRole = subRole;
@@ -83,6 +97,15 @@ public class Players {
 		this.currentTeam = currentTeam;
 	}
 
+	
+	public FantasyTeams getFantasyTeams() {
+		return fantasyTeams;
+	}
+
+	public void setFantasyTeams(FantasyTeams fantasyTeams) {
+		this.fantasyTeams = fantasyTeams;
+	}
+
 	@Override
 	public String toString() {
 		return "Players [playerId=" + playerId + ", playerIGN=" + playerIGN + ", role=" + role + ", subRole=" + subRole
@@ -94,6 +117,7 @@ public class Players {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((currentTeam == null) ? 0 : currentTeam.hashCode());
+		result = prime * result + ((fantasyTeams == null) ? 0 : fantasyTeams.hashCode());
 		result = prime * result + ((playerIGN == null) ? 0 : playerIGN.hashCode());
 		result = prime * result + ((playerId == null) ? 0 : playerId.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
@@ -114,6 +138,11 @@ public class Players {
 			if (other.currentTeam != null)
 				return false;
 		} else if (!currentTeam.equals(other.currentTeam))
+			return false;
+		if (fantasyTeams == null) {
+			if (other.fantasyTeams != null)
+				return false;
+		} else if (!fantasyTeams.equals(other.fantasyTeams))
 			return false;
 		if (playerIGN == null) {
 			if (other.playerIGN != null)
@@ -137,7 +166,7 @@ public class Players {
 			return false;
 		return true;
 	}
-	
+
 	
 	
 	
