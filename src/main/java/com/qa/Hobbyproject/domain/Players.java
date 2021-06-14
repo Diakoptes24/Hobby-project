@@ -31,7 +31,7 @@ public class Players {
 	private String currentTeam;
 	
 	@OneToOne
-	@JoinColumn(name = "fantasy_teams_team_id", nullable = false)
+	@JoinColumn(name = "fantasy_teams_team_id", nullable = true)
 	private FantasyTeams fantasyTeams;
 
 	public Players() {
@@ -56,6 +56,8 @@ public class Players {
 		this.subRole = subRole;
 		this.currentTeam = currentTeam;
 	}
+	
+	
 
 	public Long getPlayerId() {
 		return playerId;
@@ -105,6 +107,9 @@ public class Players {
 	public void setFantasyTeams(FantasyTeams fantasyTeams) {
 		this.fantasyTeams = fantasyTeams;
 	}
+
+	
+	
 
 	@Override
 	public String toString() {
