@@ -53,4 +53,9 @@ public class PlayersService {
 		Players found = optionalPlayers.orElseThrow(() -> new EntityNotFoundException());
 		return this.playersMapper.mapToDTO(found);
 	}
+	
+	public boolean delete(Long playerId) {
+		this.playersRepo.deleteById(playerId);
+		return !this.playersRepo.existsById(playerId);
+	}
 }

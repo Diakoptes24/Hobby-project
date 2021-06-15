@@ -3,6 +3,7 @@ package com.qa.Hobbyproject.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,9 +23,9 @@ public class PlayersController {
 	private PlayersService playersService;
 
 	@Autowired
-	public PlayersController(PlayersService pService) {
+	public PlayersController(PlayersService playersService) {
 		super();
-		this.playersService = pService;
+		this.playersService = playersService;
 	}
 	
 	@PostMapping("/create")
@@ -45,6 +46,11 @@ public class PlayersController {
 	@PutMapping("/update/{playerId}")
 	public PlayersDTO updatePlayer(@RequestBody Players players, @PathVariable Long playerId) {
 		return this.playersService.updatePlayer(playerId, players);
+	}
+	
+	@DeleteMapping("/remove/{playerId}")
+	public boolean delete(@PathVariable Long playerId) {
+		return this.playersService.delete(playerId);
 	}
 //	@GetMapping("/populate")
 //	public String addOptions(Players players, Model model){
