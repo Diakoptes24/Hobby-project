@@ -1,14 +1,13 @@
 package com.qa.Hobbyproject.domain;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -24,40 +23,29 @@ public class Players {
 	@Column 
 	private String role;
 	
-	@Column
-	private String subRole;
-	
-	@Column
-	private String currentTeam;
-	
-	@OneToOne
-	@JoinColumn(name = "fantasy_teams_team_id", nullable = true)
+//	@JoinColumn(name = "fantasy_teams", referencedColumnName = "teamId")
+	@ManyToOne
+	@JsonIgnore
 	private FantasyTeams fantasyTeams;
 
 	public Players() {
 		super();
 	}
 
-	public Players(Long playerId, String playerIGN, String role, String subRole, String currentTeam) {
+	
+
+	public Players(Long playerId, String playerIGN, String role) {
 		super();
 		this.playerId = playerId;
 		this.playerIGN = playerIGN;
 		this.role = role;
-		this.subRole = subRole;
-		this.currentTeam = currentTeam;
 	}
-	
-	
-	
-	public Players(String playerIGN, String role, String subRole, String currentTeam) {
+
+	public Players(String playerIGN, String role) {
 		super();
 		this.playerIGN = playerIGN;
 		this.role = role;
-		this.subRole = subRole;
-		this.currentTeam = currentTeam;
 	}
-	
-	
 
 	public Long getPlayerId() {
 		return playerId;
@@ -83,22 +71,6 @@ public class Players {
 		this.role = role;
 	}
 
-	public String getSubRole() {
-		return subRole;
-	}
-
-	public void setSubRole(String subRole) {
-		this.subRole = subRole;
-	}
-
-	public String getCurrentTeam() {
-		return currentTeam;
-	}
-
-	public void setCurrentTeam(String currentTeam) {
-		this.currentTeam = currentTeam;
-	}
-
 	
 	public FantasyTeams getFantasyTeams() {
 		return fantasyTeams;
@@ -113,20 +85,19 @@ public class Players {
 
 	@Override
 	public String toString() {
-		return "Players [playerId=" + playerId + ", playerIGN=" + playerIGN + ", role=" + role + ", subRole=" + subRole
-				+ ", currentTeam=" + currentTeam + "]";
+		return "Players [playerIGN=" + playerIGN + ", role=" + role + "]";
 	}
+
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((currentTeam == null) ? 0 : currentTeam.hashCode());
 		result = prime * result + ((fantasyTeams == null) ? 0 : fantasyTeams.hashCode());
 		result = prime * result + ((playerIGN == null) ? 0 : playerIGN.hashCode());
 		result = prime * result + ((playerId == null) ? 0 : playerId.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
-		result = prime * result + ((subRole == null) ? 0 : subRole.hashCode());
 		return result;
 	}
 
@@ -139,11 +110,6 @@ public class Players {
 		if (getClass() != obj.getClass())
 			return false;
 		Players other = (Players) obj;
-		if (currentTeam == null) {
-			if (other.currentTeam != null)
-				return false;
-		} else if (!currentTeam.equals(other.currentTeam))
-			return false;
 		if (fantasyTeams == null) {
 			if (other.fantasyTeams != null)
 				return false;
@@ -164,15 +130,9 @@ public class Players {
 				return false;
 		} else if (!role.equals(other.role))
 			return false;
-		if (subRole == null) {
-			if (other.subRole != null)
-				return false;
-		} else if (!subRole.equals(other.subRole))
-			return false;
 		return true;
 	}
 
-	
 	
 	
 	

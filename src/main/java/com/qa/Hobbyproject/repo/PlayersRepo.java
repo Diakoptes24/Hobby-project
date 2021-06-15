@@ -10,6 +10,6 @@ import com.qa.Hobbyproject.domain.Players;
 @Repository
 public interface PlayersRepo extends JpaRepository<Players, Long> {
 	
-	List<Players> findBySubRoleIgnoreCase(String subRole);
+	List<Players> findByRoleIgnoreCase(String role);
 
 }

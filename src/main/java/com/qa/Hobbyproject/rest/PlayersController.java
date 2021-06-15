@@ -14,17 +14,17 @@ import com.qa.Hobbyproject.service.PlayersService;
 @RequestMapping("/players")
 public class PlayersController {
 	
-	private PlayersService pService;
+	private PlayersService playersService;
 
 	@Autowired
 	public PlayersController(PlayersService pService) {
 		super();
-		this.pService = pService;
+		this.playersService = pService;
 	}
 	
 	@PostMapping("/create")
 	public PlayersDTO createPlayer(@RequestBody Players players) {
-		return this.pService.createPlayer(players);
+		return this.playersService.createPlayer(players);
 	}
 	
 //	@GetMapping("/populate")

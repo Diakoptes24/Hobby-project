@@ -22,55 +22,27 @@ public class FantasyTeamsMapper implements Mapper<FantasyTeams, FantasyTeamsDTO>
 	}
 
 	@Override
-	public FantasyTeamsDTO mapToDTO(FantasyTeams fTeams) {
+	public FantasyTeamsDTO mapToDTO(FantasyTeams fantasyTeams) {
 		
 		FantasyTeamsDTO dto = new FantasyTeamsDTO();
 		
-		dto.setTeamId(fTeams.getTeamId());
-		dto.setTeamName(fTeams.getTeamName());
+		dto.setTeamId(fantasyTeams.getTeamId());
+		dto.setTeamName(fantasyTeams.getTeamName());
 		
-//		List<PlayersDTO> mainTank = new ArrayList<>();
-//		for (Players players : fTeams.getMainTank()) {
-//			mainTank.add(this.playersMapper.mapToDTO(players));
+//		List<PlayersDTO> players = new ArrayList<>();
+//		for (Players player : fantasyTeams.getPlayers()) {
+//			players.add(this.playersMapper.mapToDTO(player));
 //		}
-//		dto.setMainTank(mainTank);
+//		dto.setPlayers(players);
 		
-//		List<PlayersDTO> offTank = new ArrayList<>();
-//		for (Players players : fTeams.getOffTank()) {
-//			offTank.add(this.playersMapper.mapToDTO(players));
-//		}
-//		dto.setOffTank(offTank);
-//		
-//		List<PlayersDTO> hitscanDPS = new ArrayList<>();
-//		for (Players players : fTeams.getHitscanDPS()) {
-//			hitscanDPS.add(this.playersMapper.mapToDTO(players));
-//		}
-//		dto.setHitscanDPS(hitscanDPS);
-//		
-//		List<PlayersDTO> flexDPS = new ArrayList<>();
-//		for (Players players : fTeams.getFlexDPS()) {
-//			flexDPS.add(this.playersMapper.mapToDTO(players));
-//		}
-//		dto.setFlexDPS(flexDPS);
-//		
-//		List<PlayersDTO> mainSupport = new ArrayList<>();
-//		for (Players players : fTeams.getMainSupport()) {
-//			mainSupport.add(this.playersMapper.mapToDTO(players));
-//		}
-//		dto.setMainSupport(mainSupport);
-//		
-//		List<PlayersDTO> flexSupport = new ArrayList<>();
-//		for (Players players : fTeams.getFlexSupport()) {
-//			flexSupport.add(this.playersMapper.mapToDTO(players));
-//		}
-//		dto.setFlexSupport(flexSupport);
+
 		
-		dto.setMainTank(fTeams.getMainTank());
-		dto.setOffTank(fTeams.getOffTank());
-		dto.setHitscanDPS(fTeams.getHitscanDPS());
-		dto.setFlexDPS(fTeams.getFlexDPS());
-		dto.setMainSupport(fTeams.getMainSupport());
-		dto.setFlexSupport(fTeams.getFlexSupport());
+//		dto.setMainTank(fTeams.getMainTank());
+//		dto.setOffTank(fTeams.getOffTank());
+//		dto.setHitscanDPS(fTeams.getHitscanDPS());
+//		dto.setFlexDPS(fTeams.getFlexDPS());
+//		dto.setMainSupport(fTeams.getMainSupport());
+//		dto.setFlexSupport(fTeams.getFlexSupport());
 		return dto;
 	}
 

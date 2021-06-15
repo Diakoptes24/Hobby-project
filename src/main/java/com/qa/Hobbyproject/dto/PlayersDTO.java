@@ -10,26 +10,17 @@ public class PlayersDTO {
 
 	
 	private String role;
-	
-	
-	private String subRole;
-	
-	
-	private String currentTeam;
 
 
 	public PlayersDTO() {
 		super();
 	}
 
-
-	public PlayersDTO(Long playerId, String playerIGN, String role, String subRole, String currentTeam) {
+	public PlayersDTO(Long playerId, String playerIGN, String role) {
 		super();
 		this.playerId = playerId;
 		this.playerIGN = playerIGN;
 		this.role = role;
-		this.subRole = subRole;
-		this.currentTeam = currentTeam;
 	}
 
 
@@ -62,24 +53,46 @@ public class PlayersDTO {
 		this.role = role;
 	}
 
-
-	public String getSubRole() {
-		return subRole;
+	@Override
+	public String toString() {
+		return "PlayersDTO [playerId=" + playerId + ", playerIGN=" + playerIGN + ", role=" + role + "]";
 	}
 
-
-	public void setSubRole(String subRole) {
-		this.subRole = subRole;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((playerIGN == null) ? 0 : playerIGN.hashCode());
+		result = prime * result + ((playerId == null) ? 0 : playerId.hashCode());
+		result = prime * result + ((role == null) ? 0 : role.hashCode());
+		return result;
 	}
 
-
-	public String getCurrentTeam() {
-		return currentTeam;
-	}
-
-
-	public void setCurrentTeam(String currentTeam) {
-		this.currentTeam = currentTeam;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PlayersDTO other = (PlayersDTO) obj;
+		if (playerIGN == null) {
+			if (other.playerIGN != null)
+				return false;
+		} else if (!playerIGN.equals(other.playerIGN))
+			return false;
+		if (playerId == null) {
+			if (other.playerId != null)
+				return false;
+		} else if (!playerId.equals(other.playerId))
+			return false;
+		if (role == null) {
+			if (other.role != null)
+				return false;
+		} else if (!role.equals(other.role))
+			return false;
+		return true;
 	}
 
 	

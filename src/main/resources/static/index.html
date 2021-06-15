@@ -16,28 +16,16 @@
         Build your own fantasy team!
     </h1>
     <main class="container">
-        <form id="createTeam">
+        <form id="createPlayer">
             <fieldset>
-                Please enter the name of your fantasy team:
+                <!-- Please enter the name of your fantasy team:
                 <input type="text" name="teamName" />
+                <br> -->
+                <label for="playerIGN"> Please enter the IGN of the player:</label>
+                <input id="playerIGN" type="text">
                 <br>
-                <label for="mainTank"> Please enter your choice of Main Tank:</label>
-                <input id="mainTank" type="text">
-                <br>
-                <label for="offTank"> Please enter your choice of Off Tank:</label>
-                <input id="offTank" type="text">
-                <br>
-                <label for="hitscanDPS"> Please enter your choice of Hitscan DPS:</label>
-                <input id="hitscanDPS" type="text">
-                <br>
-                <label for="flexDPS"> Please enter your choice of Flex DPS:</label>
-                <input id="flexDPS" type="text">
-                <br>
-                <label for="mainSupport"> Please enter your choice of Main Support:</label>
-                <input id="mainSupport" type="text">
-                <br>
-                <label for="flexSupport"> Please enter your choice of Flex Support:</label>
-                <input id="flexSupport" type="text">
+                <label for="role"> Please enter this players role:</label>
+                <input id="role" type="text">
                 <br>
                 <button type="reset" class="btn btn-primary">Clear</button>
                 <button type="submit" class="btn btn-primary">Create</button>

@@ -35,10 +35,10 @@ public class PlayersControllerIntegrationTest {
 	
 	@Test
 	void testCreate() throws Exception {
-		Players testPlayers = new Players("Fearless", "Tank", "Main Tank", "Dallas Fuel");
+		Players testPlayers = new Players("Fearless", "Main Tank");
 		String testPlayersAsJSON = this.mapper.writeValueAsString(testPlayers);
 
-		Players testSavedPlayer = new Players("Fearless", "Tank", "Main Tank", "Dallas Fuel");
+		Players testSavedPlayer = new Players("Fearless", "Main Tank");
 		testSavedPlayer.setPlayerId((long) 2);
 		String testSavedPlayersAsJSON = this.mapper.writeValueAsString(testSavedPlayer);
 
@@ -49,7 +49,12 @@ public class PlayersControllerIntegrationTest {
 
 		ResultMatcher checkBody = content().json(testSavedPlayersAsJSON);
 
+//		System.out.println(checkBody);
+//		System.out.println(checkStatus);
+//		System.out.println(mockRequest);
+		
 		this.mvc.perform(mockRequest).andExpect(checkStatus).andExpect(checkBody);
 
+	
 	}
 }

@@ -16,8 +16,7 @@ public class PlayersMapper implements Mapper<Players, PlayersDTO>{
 		dto.setPlayerId(players.getPlayerId());
 		dto.setPlayerIGN(players.getPlayerIGN());
 		dto.setRole(players.getRole());
-		dto.setSubRole(players.getSubRole());
-		dto.setCurrentTeam(players.getCurrentTeam());
+		
 
 		return dto;
 	}

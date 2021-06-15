@@ -2,10 +2,10 @@
 
 const output = document.getElementById("output");
 
-const getFantasyTeams = async () => {
+const getPlayers = async () => {
     const res = await axios.get("/hwa/");
     output.innerHTML = "";
-    res.data.forEach(fantasyTeams => renderFantasyTeam(fantasyTeams));
+    res.data.forEach(player => renderPlayers(player));
 }
 
 // const renderFantasyTeam = ({ team_id, teamName, mainTank, offTank, hitscanDPS, flexDPS, mainSupport, flexSupport }) => {
@@ -71,24 +71,20 @@ const getFantasyTeams = async () => {
 //     output.appendChild(column);
 // }
 
-getFantasyTeams();
+getPlayers();
 
 document.getElementById("createTeam").addEventListener("submit", function (event) {
     event.preventDefault();
 
     const data = {
-        teamName: this.teamName.value,
-        mainTank: this.mainTank.value,
-        offTank: this.offTank.value,
-        hitscanDPS: this.hitscanDPS.value,
-        flexDPS: this.flexDPS.value,
-        mainSupport: this.mainSupport.value,
-        flexSupport: this.flexSupport.value
+        playerIGN: this.playerIGN.value,
+        role: this.role.value,
+
     }
 
-    axios.post("/fantasyteams/create", data)
+    axios.post("/players/create", data)
         .then(res => {
-            getFantasyTeams();
+            getPlayers();
             this.reset();
             this.make.focus();
         }).catch(err => console.log(err));
@@ -96,7 +92,7 @@ document.getElementById("createTeam").addEventListener("submit", function (event
     console.log(this);
 });
 
-const deleteFantasyTeam = async (id) => {
-    const res = await axios.delete(`/fantasyteams/remove/${team_id}`);
-    getFantasyTeams();
+const deletePlayers = async (id) => {
+    const res = await axios.delete(`/players/remove/${player_id}`);
+    getPlayers();
 };

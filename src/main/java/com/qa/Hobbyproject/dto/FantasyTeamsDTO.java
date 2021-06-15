@@ -1,6 +1,6 @@
 package com.qa.Hobbyproject.dto;
 
-
+import java.util.List;
 
 public class FantasyTeamsDTO {
 
@@ -8,34 +8,27 @@ public class FantasyTeamsDTO {
 	
 	private String teamName;
 	
-	private String mainTank;
-	
-	private String offTank;
-	
-	private String hitscanDPS;
-	
-	private String flexDPS;
-	
-	private String mainSupport;
-	
-	private String flexSupport;
+	private List<PlayersDTO> players;
 
 	public FantasyTeamsDTO() {
 		super();
 	}
 
-	public FantasyTeamsDTO(Long teamId, String teamName, String mainTank, String offTank, String hitscanDPS,
-			String flexDPS, String mainSupport, String flexSupport) {
+
+	public FantasyTeamsDTO(Long teamId, String teamName, List<PlayersDTO> players) {
 		super();
 		this.teamId = teamId;
 		this.teamName = teamName;
-		this.mainTank = mainTank;
-		this.offTank = offTank;
-		this.hitscanDPS = hitscanDPS;
-		this.flexDPS = flexDPS;
-		this.mainSupport = mainSupport;
-		this.flexSupport = flexSupport;
+		this.players = players;
 	}
+
+	
+	public FantasyTeamsDTO(Long teamId, String teamName) {
+		super();
+		this.teamId = teamId;
+		this.teamName = teamName;
+	}
+
 
 	public Long getTeamId() {
 		return teamId;
@@ -53,54 +46,56 @@ public class FantasyTeamsDTO {
 		this.teamName = teamName;
 	}
 
-	public String getMainTank() {
-		return mainTank;
+
+	public List<PlayersDTO> getPlayers() {
+		return players;
 	}
 
-	public void setMainTank(String mainTank) {
-		this.mainTank = mainTank;
+
+	public void setPlayers(List<PlayersDTO> players) {
+		this.players = players;
 	}
 
-	public String getOffTank() {
-		return offTank;
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((players == null) ? 0 : players.hashCode());
+		result = prime * result + ((teamId == null) ? 0 : teamId.hashCode());
+		result = prime * result + ((teamName == null) ? 0 : teamName.hashCode());
+		return result;
 	}
 
-	public void setOffTank(String offTank) {
-		this.offTank = offTank;
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FantasyTeamsDTO other = (FantasyTeamsDTO) obj;
+		if (players == null) {
+			if (other.players != null)
+				return false;
+		} else if (!players.equals(other.players))
+			return false;
+		if (teamId == null) {
+			if (other.teamId != null)
+				return false;
+		} else if (!teamId.equals(other.teamId))
+			return false;
+		if (teamName == null) {
+			if (other.teamName != null)
+				return false;
+		} else if (!teamName.equals(other.teamName))
+			return false;
+		return true;
 	}
 
-	public String getHitscanDPS() {
-		return hitscanDPS;
-	}
-
-	public void setHitscanDPS(String hitscanDPS) {
-		this.hitscanDPS = hitscanDPS;
-	}
-
-	public String getFlexDPS() {
-		return flexDPS;
-	}
-
-	public void setFlexDPS(String flexDPS) {
-		this.flexDPS = flexDPS;
-	}
-
-	public String getMainSupport() {
-		return mainSupport;
-	}
-
-	public void setMainSupport(String mainSupport) {
-		this.mainSupport = mainSupport;
-	}
-
-	public String getFlexSupport() {
-		return flexSupport;
-	}
-
-	public void setFlexSupport(String flexSupport) {
-		this.flexSupport = flexSupport;
-	}
-
+	
 	
 
 	

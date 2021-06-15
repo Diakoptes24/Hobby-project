@@ -14,16 +14,16 @@ import com.qa.Hobbyproject.service.FantasyTeamsService;
 @RequestMapping("/fantasyteams")
 public class FantasyTeamsController {
 
-	private FantasyTeamsService fTService;
+	private FantasyTeamsService fantasyTeamsService;
 
 	@Autowired
-	public FantasyTeamsController(FantasyTeamsService fTService) {
+	public FantasyTeamsController(FantasyTeamsService fantasyTeamsService) {
 		super();
-		this.fTService = fTService;
+		this.fantasyTeamsService = fantasyTeamsService;
 	}
 	
 	@PostMapping("/create")
-	public FantasyTeamsDTO createFantasyTeam(@RequestBody FantasyTeams fTeams) {
-		return this.fTService.createFantasyTeam(fTeams);
+	public FantasyTeamsDTO createFantasyTeam(@RequestBody FantasyTeams fantasyTeams) {
+		return this.fantasyTeamsService.createFantasyTeam(fantasyTeams);
 	}
 }

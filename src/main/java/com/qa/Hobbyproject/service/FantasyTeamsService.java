@@ -10,18 +10,18 @@ import com.qa.Hobbyproject.utils.FantasyTeamsMapper;
 @Service
 public class FantasyTeamsService {
 
-	private FantasyTeamsRepo fTeamsRepo;
+	private FantasyTeamsRepo fantasyTeamsRepo;
 	
-	private FantasyTeamsMapper fTeamsMapper;
+	private FantasyTeamsMapper fantasyTeamsMapper;
 
-	public FantasyTeamsService(FantasyTeamsRepo fTeamsRepo, FantasyTeamsMapper fTeamsMapper) {
+	public FantasyTeamsService(FantasyTeamsRepo fantasyTeamsRepo, FantasyTeamsMapper fantasyTeamsMapper) {
 		super();
-		this.fTeamsRepo = fTeamsRepo;
-		this.fTeamsMapper = fTeamsMapper;
+		this.fantasyTeamsRepo = fantasyTeamsRepo;
+		this.fantasyTeamsMapper = fantasyTeamsMapper;
 	}
 	
-	public FantasyTeamsDTO createFantasyTeam(FantasyTeams fTeams) {
-		FantasyTeams saved = this.fTeamsRepo.save(fTeams);
-		return this.fTeamsMapper.mapToDTO(saved);
+	public FantasyTeamsDTO createFantasyTeam(FantasyTeams fantasyTeams) {
+		FantasyTeams saved = this.fantasyTeamsRepo.save(fantasyTeams);
+		return this.fantasyTeamsMapper.mapToDTO(saved);
 	}
 }
