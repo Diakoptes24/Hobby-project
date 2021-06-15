@@ -50,4 +50,9 @@ public class FantasyTeamsService {
 		FantasyTeams found = optionalTeams.orElseThrow(() -> new EntityNotFoundException());
 		return this.fantasyTeamsMapper.mapToDTO(found);
 	}
+	
+	public boolean delete(Long teamId) {
+		this.fantasyTeamsRepo.deleteById(teamId);
+		return !this.fantasyTeamsRepo.existsById(teamId);
+	}
 }
