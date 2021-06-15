@@ -3,7 +3,10 @@ package com.qa.Hobbyproject.service;
 
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
+
+import javax.persistence.EntityNotFoundException;
 
 import org.springframework.stereotype.Service;
 
@@ -32,5 +35,22 @@ public class PlayersService {
 	
 	public List<PlayersDTO> getPlayers() {
 		return this.playersRepo.findAll().stream().map(player -> this.playersMapper.mapToDTO(player)).collect(Collectors.toList());
+	}
+	
+	public PlayersDTO updatePlayer(Long playerId, Players newData) {
+		Players existing = this.playersRepo.findById(playerId).orElseThrow(() -> new EntityNotFoundException()); // fetch existing from
+																								// db
+		existing.setPlayerIGN(newData.getPlayerIGN()); // update the values
+		existing.setRole(newData.getRole());
+
+		Players updated = this.playersRepo.save(existing); // save it back to overwrite original
+
+		return this.playersMapper.mapToDTO(updated);
+	}
+	
+	public PlayersDTO findPlayer(Long playerId) {
+		Optional<Players> optionalPlayers = this.playersRepo.findById(playerId);
+		Players found = optionalPlayers.orElseThrow(() -> new EntityNotFoundException());
+		return this.playersMapper.mapToDTO(found);
 	}
 }
