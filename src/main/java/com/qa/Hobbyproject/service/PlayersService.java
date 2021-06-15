@@ -2,6 +2,9 @@ package com.qa.Hobbyproject.service;
 
 
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import com.qa.Hobbyproject.domain.Players;
@@ -27,5 +30,7 @@ public class PlayersService {
 		return this.playersMapper.mapToDTO(saved);
 	}
 	
-	
+	public List<PlayersDTO> getPlayers() {
+		return this.playersRepo.findAll().stream().map(player -> this.playersMapper.mapToDTO(player)).collect(Collectors.toList());
+	}
 }

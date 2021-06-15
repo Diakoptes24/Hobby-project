@@ -1,6 +1,9 @@
 package com.qa.Hobbyproject.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +30,10 @@ public class PlayersController {
 		return this.playersService.createPlayer(players);
 	}
 	
+	@GetMapping("/")
+	public List<PlayersDTO> getPlayers() {
+		return this.playersService.getPlayers();
+	}
 //	@GetMapping("/populate")
 //	public String addOptions(Players players, Model model){
 //	    model.addAttribute("players", PlayersRepo.findBySubRoleIgnoreCase(getSubRole()));
