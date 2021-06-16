@@ -2,6 +2,7 @@ package com.qa.Hobbyproject.rest;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -69,4 +70,16 @@ public class PlayersControllerIntegrationTest {
 		this.mvc.perform(get("/players/")).andExpect(status().isOk()).andExpect(content().json(testPlayersAsJSONArray));
 
 	}
+	
+	@Test
+	void testupdatePlayer() throws Exception {
+		Players testPlayers = new Players(1L, "Fearless", "Main Tank");
+		String testPlayersAsJSON = this.mapper.writeValueAsString(testPlayers);
+		
+		RequestBuilder mockRequest = put("/players/update/1").content(testPlayersAsJSON)
+				.contentType(MediaType.APPLICATION_JSON);
+		
+		this.mvc.perform(mockRequest).andExpect(status().isOk()).andExpect(content().json(testPlayersAsJSON));
+	}
+	
 }

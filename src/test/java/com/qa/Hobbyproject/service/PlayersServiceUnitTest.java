@@ -3,6 +3,7 @@ package com.qa.Hobbyproject.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -61,5 +62,26 @@ class PlayersServiceUnitTest {
 		assertThat(this.service.getPlayers()).isEqualTo(showAllDTO);
 		Mockito.verify(this.repo, Mockito.times(1)).findAll();
 	}
+	
+	@Test
+	void testUpdate() {
+		// GIVEN
+		Long testId = 1L;
+		Players testData = new Players("Slime", "Main Support");
+		Players current = new Players(1L, "Yaki", "Flex DPS");
+		Players updatedPlayer = new Players(testId, "Slime", "Main Support");
+		PlayersDTO updatedDTO = new PlayersDTO(testId, "Slime", "Main Support");
+
+		// WHEN
+		Mockito.when(this.repo.findById(testId)).thenReturn(Optional.of(current));
+		Mockito.when(this.repo.save(updatedPlayer)).thenReturn(updatedPlayer);
+
+		// THEN
+		assertThat(this.service.updatePlayer(testId, testData)).isEqualTo(updatedDTO);
+
+		Mockito.verify(this.repo, Mockito.times(1)).findById(testId);
+		Mockito.verify(this.repo, Mockito.times(1)).save(updatedPlayer);
+	}
+
 
 }

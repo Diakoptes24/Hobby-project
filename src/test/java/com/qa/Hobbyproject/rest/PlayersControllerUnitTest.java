@@ -51,4 +51,21 @@ public class PlayersControllerUnitTest {
 		assertThat(this.controller.getPlayers()).isEqualTo(showAll);
 		Mockito.verify(this.service, Mockito.times(1)).getPlayers();
 	}
+	
+	@Test
+	void testUpdate() {
+		// GIVEN
+		Long testId = 1L;
+		Players testData = new Players("Slime", "Main Support");
+		PlayersDTO updatedDTO = new PlayersDTO(testId, "Slime", "Main Support");
+
+		// WHEN
+		
+		Mockito.when(this.service.updatePlayer(testId, testData)).thenReturn(updatedDTO);
+
+		// THEN
+		assertThat(this.service.updatePlayer(testId, testData)).isEqualTo(updatedDTO);
+		Mockito.verify(this.service, Mockito.times(1)).updatePlayer(testId, testData);
+	}
+
 }
