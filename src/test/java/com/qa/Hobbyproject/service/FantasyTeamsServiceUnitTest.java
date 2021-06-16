@@ -78,4 +78,18 @@ class FantasyTeamsServiceUnitTest {
 		Mockito.verify(this.repo, Mockito.times(1)).findById(testId);
 		Mockito.verify(this.repo, Mockito.times(1)).save(updatedTeam);
 	}
+	
+	@Test
+	void testDelete() {
+		//given
+		Long testId = 1L;
+		boolean exists = false;
+		//when
+		Mockito.when(this.repo.existsById(testId)).thenReturn(exists);
+
+		//then
+		assertThat(this.service.deleteTeam(testId)).isEqualTo(!exists);
+
+		Mockito.verify(this.repo, Mockito.times(1)).existsById(testId);
+	}
 }

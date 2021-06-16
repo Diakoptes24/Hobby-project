@@ -1,5 +1,6 @@
 package com.qa.Hobbyproject.rest;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -72,7 +73,7 @@ public class PlayersControllerIntegrationTest {
 	}
 	
 	@Test
-	void testupdatePlayer() throws Exception {
+	void testUpdatePlayer() throws Exception {
 		Players testPlayers = new Players(1L, "Fearless", "Main Tank");
 		String testPlayersAsJSON = this.mapper.writeValueAsString(testPlayers);
 		
@@ -82,4 +83,13 @@ public class PlayersControllerIntegrationTest {
 		this.mvc.perform(mockRequest).andExpect(status().isOk()).andExpect(content().json(testPlayersAsJSON));
 	}
 	
+	@Test
+	void testDeletePlayer() throws Exception {
+			RequestBuilder mockRequest = delete("/players/remove/1");
+
+			ResultMatcher checkStatus = status().isOk();
+			ResultMatcher checkBody = content().string("true");
+
+			this.mvc.perform(mockRequest).andExpect(checkStatus).andExpect(checkBody);
+	}
 }

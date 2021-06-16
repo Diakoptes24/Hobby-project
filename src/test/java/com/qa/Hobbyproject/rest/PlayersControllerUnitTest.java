@@ -64,8 +64,22 @@ public class PlayersControllerUnitTest {
 		Mockito.when(this.service.updatePlayer(testId, testData)).thenReturn(updatedDTO);
 
 		// THEN
-		assertThat(this.service.updatePlayer(testId, testData)).isEqualTo(updatedDTO);
+		assertThat(this.controller.updatePlayer(testData, testId)).isEqualTo(updatedDTO);
 		Mockito.verify(this.service, Mockito.times(1)).updatePlayer(testId, testData);
+	}
+	
+	@Test
+	void testDelete() {
+		//given
+		Long testId = 1L;
+		
+		//when
+		Mockito.when(this.service.deletePlayer(testId)).thenReturn(true);
+
+		//then
+		assertThat(this.controller.delete(testId)).isEqualTo(true);
+
+		Mockito.verify(this.service, Mockito.times(1)).deletePlayer(testId);
 	}
 
 }

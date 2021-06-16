@@ -45,13 +45,13 @@ public class FantasyTeamsService {
 		return this.fantasyTeamsMapper.mapToDTO(updated);
 	}
 	
-	public FantasyTeamsDTO findTeam(Long teamId) {
-		Optional<FantasyTeams> optionalTeams = this.fantasyTeamsRepo.findById(teamId);
-		FantasyTeams found = optionalTeams.orElseThrow(() -> new EntityNotFoundException());
-		return this.fantasyTeamsMapper.mapToDTO(found);
-	}
+//	public FantasyTeamsDTO findTeam(Long teamId) {
+//		Optional<FantasyTeams> optionalTeams = this.fantasyTeamsRepo.findById(teamId);
+//		FantasyTeams found = optionalTeams.orElseThrow(() -> new EntityNotFoundException());
+//		return this.fantasyTeamsMapper.mapToDTO(found);
+//	}
 	
-	public boolean delete(Long teamId) {
+	public boolean deleteTeam(Long teamId) {
 		this.fantasyTeamsRepo.deleteById(teamId);
 		return !this.fantasyTeamsRepo.existsById(teamId);
 	}

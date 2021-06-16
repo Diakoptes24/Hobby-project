@@ -38,10 +38,10 @@ public class PlayersController {
 		return this.playersService.getPlayers();
 	}
 	
-	@GetMapping("/find/{id}")
-	public PlayersDTO find(@PathVariable Long playerId) {
-		return this.playersService.findPlayer(playerId);
-	}
+//	@GetMapping("/find/{id}")
+//	public PlayersDTO find(@PathVariable Long playerId) {
+//		return this.playersService.findPlayer(playerId);
+//	}
 	
 	@PutMapping("/update/{playerId}")
 	public PlayersDTO updatePlayer(@RequestBody Players players, @PathVariable Long playerId) {
@@ -50,7 +50,7 @@ public class PlayersController {
 	
 	@DeleteMapping("/remove/{playerId}")
 	public boolean delete(@PathVariable Long playerId) {
-		return this.playersService.delete(playerId);
+		return this.playersService.deletePlayer(playerId);
 	}
 //	@GetMapping("/populate")
 //	public String addOptions(Players players, Model model){

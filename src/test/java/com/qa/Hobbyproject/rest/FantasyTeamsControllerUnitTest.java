@@ -67,4 +67,18 @@ public class FantasyTeamsControllerUnitTest {
 		assertThat(this.service.updateTeam(testId, testData)).isEqualTo(updatedDTO);
 		Mockito.verify(this.service, Mockito.times(1)).updateTeam(testId, testData);
 	}
+	
+	@Test
+	void testDelete() {
+		//given
+		Long testId = 1L;
+		
+		//when
+		Mockito.when(this.service.deleteTeam(testId)).thenReturn(true);
+
+		//then
+		assertThat(this.controller.delete(testId)).isEqualTo(true);
+
+		Mockito.verify(this.service, Mockito.times(1)).deleteTeam(testId);
+	}
 }

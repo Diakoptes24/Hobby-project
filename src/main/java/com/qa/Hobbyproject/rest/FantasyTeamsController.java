@@ -38,10 +38,10 @@ public class FantasyTeamsController {
 		return this.fantasyTeamsService.getFantasyTeams();
 	}
 	
-	@GetMapping("/find/{Id}")
-	public FantasyTeamsDTO find(@PathVariable Long teamId) {
-		return this.fantasyTeamsService.findTeam(teamId);
-	}
+//	@GetMapping("/find/{Id}")
+//	public FantasyTeamsDTO find(@PathVariable Long teamId) {
+//		return this.fantasyTeamsService.findTeam(teamId);
+//	}
 	
 	@PutMapping("/update/{teamId}")
 	public FantasyTeamsDTO updateTeam(@RequestBody FantasyTeams fantasyTeams, @PathVariable Long teamId) {
@@ -50,6 +50,6 @@ public class FantasyTeamsController {
 	
 	@DeleteMapping("/remove/{teamId}")
 	public boolean delete(@PathVariable Long teamId) {
-		return this.fantasyTeamsService.delete(teamId);
+		return this.fantasyTeamsService.deleteTeam(teamId);
 	}
 }
