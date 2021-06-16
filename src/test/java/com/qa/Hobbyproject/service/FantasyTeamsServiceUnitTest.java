@@ -3,6 +3,7 @@ package com.qa.Hobbyproject.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -58,4 +59,23 @@ class FantasyTeamsServiceUnitTest {
 		Mockito.verify(this.repo, Mockito.times(1)).findAll();
 	}
 
+	@Test
+	void testUpdate() {
+		// GIVEN
+		Long testId = 1L;
+		FantasyTeams testData = new FantasyTeams("Florida Mayhem");
+		FantasyTeams current = new FantasyTeams(1L, "Surrey Stags");
+		FantasyTeams updatedTeam = new FantasyTeams(testId, "Florida Mayhem");
+		FantasyTeamsDTO updatedDTO = new FantasyTeamsDTO(testId, "Florida Mayhem");
+
+		// WHEN
+		Mockito.when(this.repo.findById(testId)).thenReturn(Optional.of(current));
+		Mockito.when(this.repo.save(updatedTeam)).thenReturn(updatedTeam);
+
+		// THEN
+		assertThat(this.service.updateTeam(testId, testData)).isEqualTo(updatedDTO);
+
+		Mockito.verify(this.repo, Mockito.times(1)).findById(testId);
+		Mockito.verify(this.repo, Mockito.times(1)).save(updatedTeam);
+	}
 }

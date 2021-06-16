@@ -51,4 +51,20 @@ public class FantasyTeamsControllerUnitTest {
 		assertThat(this.controller.getFantasyTeams()).isEqualTo(showAll);
 		Mockito.verify(this.service, Mockito.times(1)).getFantasyTeams();
 	}
+	
+	@Test
+	void testUpdateTeams() {
+		// GIVEN
+		Long testId = 1L;
+		FantasyTeams testData = new FantasyTeams("Florida Mayhem");
+		FantasyTeamsDTO updatedDTO = new FantasyTeamsDTO(testId, "Florida Mayhem");
+
+		// WHEN
+		
+		Mockito.when(this.service.updateTeam(testId, testData)).thenReturn(updatedDTO);
+
+		// THEN
+		assertThat(this.service.updateTeam(testId, testData)).isEqualTo(updatedDTO);
+		Mockito.verify(this.service, Mockito.times(1)).updateTeam(testId, testData);
+	}
 }
