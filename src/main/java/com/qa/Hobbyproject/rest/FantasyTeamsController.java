@@ -3,7 +3,6 @@ package com.qa.Hobbyproject.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,10 +45,5 @@ public class FantasyTeamsController {
 	@PutMapping("/update/{teamId}")
 	public FantasyTeamsDTO updateTeam(@RequestBody FantasyTeams fantasyTeams, @PathVariable Long teamId) {
 		return this.fantasyTeamsService.updateTeam(teamId, fantasyTeams);
-	}
-	
-	@DeleteMapping("/remove/{teamId}")
-	public boolean delete(@PathVariable Long teamId) {
-		return this.fantasyTeamsService.delete(teamId);
 	}
 }
