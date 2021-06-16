@@ -38,10 +38,10 @@ public class PlayersController {
 		return this.playersService.getPlayers();
 	}
 	
-	@GetMapping("/find/{id}")
-	public PlayersDTO find(@PathVariable Long playerId) {
-		return this.playersService.findPlayer(playerId);
-	}
+//	@GetMapping("/find/{id}")
+//	public PlayersDTO find(@PathVariable Long playerId) {
+//		return this.playersService.findPlayer(playerId);
+//	}
 	
 	@PutMapping("/update/{playerId}")
 	public PlayersDTO updatePlayer(@RequestBody Players players, @PathVariable Long playerId) {

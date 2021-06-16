@@ -1,5 +1,6 @@
 package com.qa.Hobbyproject.rest;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -26,8 +27,8 @@ import com.qa.Hobbyproject.domain.FantasyTeams;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT) // prevents port conflicts
 @AutoConfigureMockMvc
-@Sql(scripts = { "classpath:fantasyTeams-schema.sql",
-		"classpath:fantasyTeams-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = { "classpath:teamsTest-schema.sql",
+		"classpath:teamsTest-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("test")
 public class FantasyTeamsControllerIntegrationTest {
 
@@ -76,4 +77,15 @@ public class FantasyTeamsControllerIntegrationTest {
 		
 		this.mvc.perform(mockRequest).andExpect(status().isOk()).andExpect(content().json(testTeamsAsJSON));
 	}
+	
+	@Test
+	void testDeleteTeam() throws Exception {
+			RequestBuilder mockRequest = delete("/fantasyteams/remove/1");
+
+			ResultMatcher checkStatus = status().isOk();
+			ResultMatcher checkBody = content().string("true");
+
+			this.mvc.perform(mockRequest).andExpect(checkStatus).andExpect(checkBody);
+	
+}
 }

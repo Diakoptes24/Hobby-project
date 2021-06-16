@@ -48,11 +48,11 @@ public class PlayersService {
 		return this.playersMapper.mapToDTO(updated);
 	}
 	
-	public PlayersDTO findPlayer(Long playerId) {
-		Optional<Players> optionalPlayers = this.playersRepo.findById(playerId);
-		Players found = optionalPlayers.orElseThrow(() -> new EntityNotFoundException());
-		return this.playersMapper.mapToDTO(found);
-	}
+//	public PlayersDTO findPlayer(Long playerId) {
+//		Optional<Players> optionalPlayers = this.playersRepo.findById(playerId);
+//		Players found = optionalPlayers.orElseThrow(() -> new EntityNotFoundException());
+//		return this.playersMapper.mapToDTO(found);
+//	}
 	
 	public boolean deletePlayer(Long playerId) {
 		this.playersRepo.deleteById(playerId);
