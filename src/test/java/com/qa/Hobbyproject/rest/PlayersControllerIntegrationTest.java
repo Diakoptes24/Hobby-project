@@ -1,8 +1,11 @@
 package com.qa.Hobbyproject.rest;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +57,16 @@ public class PlayersControllerIntegrationTest {
 //		System.out.println(mockRequest);
 		
 		this.mvc.perform(mockRequest).andExpect(checkStatus).andExpect(checkBody);
-
 	
+	}
+	
+	@Test
+	void testGetAll() throws Exception {
+		Players testPlayer = new Players(1L, "Yaki", "Flex DPS");
+		List<Players> testPlayers = List.of(testPlayer);
+		String testPlayersAsJSONArray = this.mapper.writeValueAsString(testPlayers);
+
+		this.mvc.perform(get("/players/")).andExpect(status().isOk()).andExpect(content().json(testPlayersAsJSONArray));
+
 	}
 }

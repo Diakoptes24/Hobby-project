@@ -2,6 +2,8 @@ package com.qa.Hobbyproject.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +38,17 @@ public class PlayersControllerUnitTest {
 		assertThat(this.controller.createPlayer(testData)).isEqualTo(newDTO);
 		
 		Mockito.verify(this.service, Mockito.times(1)).createPlayer(testData);
+	}
+	
+	@Test
+	void testGetPlayer() {
+		//given
+		PlayersDTO currentDTO = new PlayersDTO(1L, "Yaki", "Flex DPS");
+		List<PlayersDTO> showAll = List.of(currentDTO);
+		//when
+		Mockito.when(this.service.getPlayers()).thenReturn(showAll);
+		//then
+		assertThat(this.controller.getPlayers()).isEqualTo(showAll);
+		Mockito.verify(this.service, Mockito.times(1)).getPlayers();
 	}
 }

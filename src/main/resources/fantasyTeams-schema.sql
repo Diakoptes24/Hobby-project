@@ -1,14 +1,5 @@
-DROP TABLE IF EXISTS `players` CASCADE;
-DROP TABLE IF EXISTS `fantasy_teams` CASCADE;
-
-CREATE TABLE players (
-    player_id BIGINT AUTO_INCREMENT,
-    playerign VARCHAR(255) NOT NULL,
-    `role` VARCHAR(255) NOT NULL,
-    fantasy_teams_team_id BIGINT,
-    PRIMARY KEY (player_id)
-	foreign key (fantasy_teams_team_id) REFERENCES fantasy_teams(team_id)
-	);
+DROP TABLE IF EXISTS players CASCADE;
+DROP TABLE IF EXISTS fantasy_teams CASCADE;
 
 CREATE TABLE fantasy_teams (
     team_id BIGINT AUTO_INCREMENT,
@@ -17,6 +8,16 @@ CREATE TABLE fantasy_teams (
     PRIMARY KEY (team_id)
     );
     
+
+CREATE TABLE players (
+    player_id BIGINT AUTO_INCREMENT,
+    playerign VARCHAR(255) NOT NULL,
+    role VARCHAR(255) NOT NULL,
+    fantasy_teams_team_id BIGINT,
+    PRIMARY KEY (player_id),
+	foreign key (fantasy_teams_team_id) REFERENCES fantasy_teams(team_id)
+	);
+
 
 
 
