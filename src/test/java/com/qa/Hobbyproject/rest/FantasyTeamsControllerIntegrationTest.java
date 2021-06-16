@@ -1,8 +1,11 @@
 package com.qa.Hobbyproject.rest;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,7 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.qa.Hobbyproject.domain.FantasyTeams;
 import com.qa.Hobbyproject.domain.FantasyTeams;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT) // prevents port conflicts
@@ -52,4 +56,13 @@ public class FantasyTeamsControllerIntegrationTest {
 		
 		this.mvc.perform(mockRequest).andExpect(checkStatus).andExpect(checkBody);
 }
+	
+	@Test
+	void testGetAll() throws Exception {
+		FantasyTeams testTeam = new FantasyTeams(1L, "Surrey Stags");
+		List<FantasyTeams> testTeams = List.of(testTeam);
+		String testTeamsAsJSONArray = this.mapper.writeValueAsString(testTeams);
+
+		this.mvc.perform(get("/fantasyteams/")).andExpect(status().isOk()).andExpect(content().json(testTeamsAsJSONArray));
+	}
 }
