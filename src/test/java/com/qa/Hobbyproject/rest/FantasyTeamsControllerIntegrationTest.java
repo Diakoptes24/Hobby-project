@@ -2,6 +2,7 @@ package com.qa.Hobbyproject.rest;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -21,7 +22,6 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qa.Hobbyproject.domain.FantasyTeams;
 import com.qa.Hobbyproject.domain.FantasyTeams;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT) // prevents port conflicts
@@ -64,5 +64,16 @@ public class FantasyTeamsControllerIntegrationTest {
 		String testTeamsAsJSONArray = this.mapper.writeValueAsString(testTeams);
 
 		this.mvc.perform(get("/fantasyteams/")).andExpect(status().isOk()).andExpect(content().json(testTeamsAsJSONArray));
+	}
+	
+	@Test
+	void testupdateTeam() throws Exception {
+		FantasyTeams testTeams = new FantasyTeams(1L, "Dallas Fuel");
+		String testTeamsAsJSON = this.mapper.writeValueAsString(testTeams);
+		
+		RequestBuilder mockRequest = put("/fantasyteams/update/1").content(testTeamsAsJSON)
+				.contentType(MediaType.APPLICATION_JSON);
+		
+		this.mvc.perform(mockRequest).andExpect(status().isOk()).andExpect(content().json(testTeamsAsJSON));
 	}
 }
