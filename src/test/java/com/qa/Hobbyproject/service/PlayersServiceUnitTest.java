@@ -65,22 +65,36 @@ class PlayersServiceUnitTest {
 	
 	@Test
 	void testUpdate() {
-		// GIVEN
+		//given
 		Long testId = 1L;
 		Players testData = new Players("Slime", "Main Support");
 		Players current = new Players(1L, "Yaki", "Flex DPS");
 		Players updatedPlayer = new Players(testId, "Slime", "Main Support");
 		PlayersDTO updatedDTO = new PlayersDTO(testId, "Slime", "Main Support");
 
-		// WHEN
+		//when
 		Mockito.when(this.repo.findById(testId)).thenReturn(Optional.of(current));
 		Mockito.when(this.repo.save(updatedPlayer)).thenReturn(updatedPlayer);
 
-		// THEN
+		//then
 		assertThat(this.service.updatePlayer(testId, testData)).isEqualTo(updatedDTO);
 
 		Mockito.verify(this.repo, Mockito.times(1)).findById(testId);
 		Mockito.verify(this.repo, Mockito.times(1)).save(updatedPlayer);
+	}
+	
+	@Test
+	void testDelete() {
+		//given
+		Long testId = 1L;
+		boolean exists = false;
+		//when
+		Mockito.when(this.repo.existsById(testId)).thenReturn(exists);
+
+		//then
+		assertThat(this.service.deletePlayer(testId)).isEqualTo(!exists);
+
+		Mockito.verify(this.repo, Mockito.times(1)).existsById(testId);
 	}
 
 

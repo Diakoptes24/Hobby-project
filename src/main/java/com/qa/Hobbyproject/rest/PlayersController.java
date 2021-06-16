@@ -50,7 +50,7 @@ public class PlayersController {
 	
 	@DeleteMapping("/remove/{playerId}")
 	public boolean delete(@PathVariable Long playerId) {
-		return this.playersService.delete(playerId);
+		return this.playersService.deletePlayer(playerId);
 	}
 //	@GetMapping("/populate")
 //	public String addOptions(Players players, Model model){
