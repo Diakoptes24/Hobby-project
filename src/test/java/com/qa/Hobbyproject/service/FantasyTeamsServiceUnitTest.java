@@ -2,6 +2,8 @@ package com.qa.Hobbyproject.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +42,20 @@ class FantasyTeamsServiceUnitTest {
 		assertThat(this.service.createFantasyTeam(testData)).isEqualTo(newTeamDTO);
 
 		Mockito.verify(this.repo, Mockito.times(1)).save(testData);
+	}
+	
+	@Test
+	void testGetFantasyTeams() {
+		//given
+		FantasyTeams current = new FantasyTeams(1L, "Surrey Stags");
+		List<FantasyTeams> showAll = List.of(current);
+		FantasyTeamsDTO currentDTO = new FantasyTeamsDTO(1L, "Surrey Stags");
+		List<FantasyTeamsDTO> showAllDTO = List.of(currentDTO);
+		//when
+		Mockito.when(this.repo.findAll()).thenReturn(showAll);
+		//then
+		assertThat(this.service.getFantasyTeams()).isEqualTo(showAllDTO);
+		Mockito.verify(this.repo, Mockito.times(1)).findAll();
 	}
 
 }
