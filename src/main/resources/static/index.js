@@ -79,7 +79,7 @@ const deletePlayer = (playerId) => {
 
 getPlayers();
 //create
-document.getElementById("createTeam").addEventListener("submit", function (event) {
+document.getElementById("createPlayer").addEventListener("submit", function (event) {
     event.preventDefault();
 
     const data = {
@@ -99,7 +99,7 @@ document.getElementById("createTeam").addEventListener("submit", function (event
     console.log(this);
 });
 
-document.getElementById("updateTeam").addEventListener("submit", function (event) {
+document.getElementById("updatePlayer").addEventListener("submit", function (event) {
     event.preventDefault();
 
     const playerID = document.getElementById("updatePlayerButton").getAttribute("playerID")
