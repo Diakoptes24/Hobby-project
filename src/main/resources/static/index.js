@@ -25,10 +25,12 @@ const renderPlayers = player => {
     const tBody = document.querySelector("tbody");
     const tRow = document.createElement("tr");
 
+    tRow.appendChild(update(player));
     tRow.appendChild(generateCell(player.playerId));
     tRow.appendChild(generateCell(player.playerIGN));
     tRow.appendChild(generateCell(player.role));
-    tRow.appendChild(update(player));
+    // tRow.appendChild(update(player));
+    tRow.appendChild(deletePlayer(player.playerId))
 
     tBody.appendChild(tRow);
 }
@@ -56,6 +58,23 @@ const update = (player) => {
     });
     tCell.appendChild(updatePlayer);
     return tCell;
+}
+
+const deletePlayer = (playerId) => {
+    const tCell = document.createElement("td");
+    const deleteBPlayer = document.createElement("button");
+    deleteBPlayer.innerText = "delete";
+    deleteBPlayer.className = 'btn btn-danger';
+    deleteBPlayer.setAttribute("type", "submit");
+    deleteBPlayer.addEventListener("click", function () {
+        deletePlayers(playerId);
+    });
+
+    tCell.appendChild(deleteBPlayer);
+    return tCell;
+
+
+
 }
 
 getPlayers();
@@ -101,8 +120,8 @@ document.getElementById("updateTeam").addEventListener("submit", function (event
     console.log(this);
 });
 
-const deletePlayers = async (id) => {
-    const res = await axios.delete(`/players/remove/${player_id}`);
+const deletePlayers = async (playerId) => {
+    const res = await axios.delete(`/players/remove/${playerId}`);
     getPlayers();
 };
 
