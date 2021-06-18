@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,9 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.qa.Hobbyproject.domain.FantasyTeams;
 import com.qa.Hobbyproject.domain.Players;
+import com.qa.Hobbyproject.dto.PlayersDTO;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT) // prevents port conflicts
 @AutoConfigureMockMvc
@@ -40,10 +43,11 @@ public class PlayersControllerIntegrationTest {
 	
 	@Test
 	void testCreate() throws Exception {
-		Players testPlayers = new Players("Fearless", "Main Tank");
+		FantasyTeams team = new FantasyTeams(1L, null);
+		Players testPlayers = new Players("Fearless", "Main Tank", team);
 		String testPlayersAsJSON = this.mapper.writeValueAsString(testPlayers);
 
-		Players testSavedPlayer = new Players("Fearless", "Main Tank");
+		PlayersDTO testSavedPlayer = new PlayersDTO("Fearless", "Main Tank");
 		testSavedPlayer.setPlayerId((long) 2);
 		String testSavedPlayersAsJSON = this.mapper.writeValueAsString(testSavedPlayer);
 
@@ -64,8 +68,9 @@ public class PlayersControllerIntegrationTest {
 	
 	@Test
 	void testGetAll() throws Exception {
-		Players testPlayer = new Players(1L, "Yaki", "Flex DPS");
-		List<Players> testPlayers = List.of(testPlayer);
+		PlayersDTO testPlayer = new PlayersDTO(1L, "Yaki", "Flex DPS");
+		List<PlayersDTO> testPlayers = new ArrayList<>(); //List.of(testPlayer);
+		testPlayers.add(testPlayer);
 		String testPlayersAsJSONArray = this.mapper.writeValueAsString(testPlayers);
 
 		this.mvc.perform(get("/players/")).andExpect(status().isOk()).andExpect(content().json(testPlayersAsJSONArray));
@@ -74,13 +79,17 @@ public class PlayersControllerIntegrationTest {
 	
 	@Test
 	void testUpdatePlayer() throws Exception {
-		Players testPlayers = new Players(1L, "Fearless", "Main Tank");
+		FantasyTeams team = new FantasyTeams(1L, null);
+		Players testPlayers = new Players(1L, "Fearless", "Main Tank", team);
 		String testPlayersAsJSON = this.mapper.writeValueAsString(testPlayers);
+		
+		PlayersDTO testPlayersDTO = new PlayersDTO(1L, "Fearless", "Main Tank");
+		String testPlayersDTOAsJSON = this.mapper.writeValueAsString(testPlayersDTO);
 		
 		RequestBuilder mockRequest = put("/players/update/1").content(testPlayersAsJSON)
 				.contentType(MediaType.APPLICATION_JSON);
 		
-		this.mvc.perform(mockRequest).andExpect(status().isOk()).andExpect(content().json(testPlayersAsJSON));
+		this.mvc.perform(mockRequest).andExpect(status().isOk()).andExpect(content().json(testPlayersDTOAsJSON));
 	}
 	
 	@Test

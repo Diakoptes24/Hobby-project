@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 @Entity
@@ -25,7 +25,7 @@ public class Players {
 	
 //	@JoinColumn(name = "fantasy_teams", referencedColumnName = "teamId")
 	@ManyToOne
-	@JsonIgnore
+	//@JsonIgnore
 	private FantasyTeams fantasyTeams;
 
 	public Players() {
@@ -33,6 +33,14 @@ public class Players {
 	}
 
 	
+
+	public Players(Long playerId, String playerIGN, String role, FantasyTeams fantasyTeams) {
+		super();
+		this.playerId = playerId;
+		this.playerIGN = playerIGN;
+		this.role = role;
+		this.fantasyTeams = fantasyTeams;
+	}
 
 	public Players(Long playerId, String playerIGN, String role) {
 		super();
@@ -46,6 +54,17 @@ public class Players {
 		this.playerIGN = playerIGN;
 		this.role = role;
 	}
+	
+	
+
+	public Players(String playerIGN, String role, FantasyTeams fantasyTeams) {
+		super();
+		this.playerIGN = playerIGN;
+		this.role = role;
+		this.fantasyTeams = fantasyTeams;
+	}
+
+
 
 	public Long getPlayerId() {
 		return playerId;
