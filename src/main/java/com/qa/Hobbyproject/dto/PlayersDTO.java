@@ -22,7 +22,12 @@ public class PlayersDTO {
 		this.playerIGN = playerIGN;
 		this.role = role;
 	}
-
+	
+	public PlayersDTO(String playerIGN, String role) {
+		super();
+		this.playerIGN = playerIGN;
+		this.role = role;
+	}
 
 	public Long getPlayerId() {
 		return playerId;
