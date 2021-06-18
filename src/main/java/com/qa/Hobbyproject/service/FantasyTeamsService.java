@@ -35,8 +35,8 @@ public class FantasyTeamsService {
 		return this.fantasyTeamsRepo.findAll().stream().map(fantasyTeam -> this.fantasyTeamsMapper.mapToDTO(fantasyTeam)).collect(Collectors.toList());
 	}
 	
-	public FantasyTeamsDTO updateTeam(Long fantasyTeamId, FantasyTeams newData) {
-		FantasyTeams existing = this.fantasyTeamsRepo.findById(fantasyTeamId).orElseThrow(() -> new EntityNotFoundException()); // fetch existing from
+	public FantasyTeamsDTO updateTeam(Long teamId, FantasyTeams newData) {
+		FantasyTeams existing = this.fantasyTeamsRepo.findById(teamId).orElseThrow(() -> new EntityNotFoundException()); // fetch existing from
 																								// db
 		existing.setTeamName(newData.getTeamName()); 
 
