@@ -1,5 +1,5 @@
 
-const getteams = async () => {
+const getTeams = async () => {
     const tBody = document.querySelector("tbody");
     tBody.innerHTML = "";
     const res = await axios.get("/fantasyteams/");
@@ -19,6 +19,7 @@ const renderTeam = team => {
     // tRow.appendChild(generateCell(team.teamIGN));
     // tRow.appendChild(generateCell(team.role));
     // tRow.appendChild(update(team));
+    tRow.appendChild(deleteTeam(team.teamId));
 
 
     tBody.appendChild(tRow);
@@ -49,9 +50,24 @@ const update = (team) => {
     return tCell;
 }
 
+const deleteTeam = (teamId) => {
+    const tCell = document.createElement("td");
+    const deleteBTeam = document.createElement("button");
+    deleteBTeam.innerText = "delete";
+    deleteBTeam.className = 'btn btn-danger';
+    deleteBTeam.setAttribute("type", "submit");
+    deleteBTeam.addEventListener("click", function () {
+        deleteteams(teamId);
+    });
+
+    tCell.appendChild(deleteBTeam);
+    return tCell;
 
 
-getteams();
+
+}
+
+getTeams();
 //create
 document.getElementById("createTeam").addEventListener("submit", function (event) {
     event.preventDefault();
@@ -65,7 +81,7 @@ document.getElementById("createTeam").addEventListener("submit", function (event
 
     axios.post("/fantasyteams/create", data)
         .then(res => {
-            getteams();
+            getTeams();
             this.reset();
             this.teamName.focus();
         }).catch(err => console.log(err));
@@ -93,3 +109,8 @@ document.getElementById("updateTeam").addEventListener("submit", function (event
 
     console.log(this);
 });
+
+const deleteteams = async (teamId) => {
+    const res = await axios.delete(`/fantasyteams/remove/${teamId}`);
+    getTeams();
+};
