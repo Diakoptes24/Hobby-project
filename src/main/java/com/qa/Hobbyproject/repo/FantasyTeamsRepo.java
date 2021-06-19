@@ -8,4 +8,6 @@ import com.qa.Hobbyproject.domain.FantasyTeams;
 @Repository
 public interface FantasyTeamsRepo extends JpaRepository<FantasyTeams, Long> {
 
+	
+
 }

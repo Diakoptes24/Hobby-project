@@ -29,6 +29,11 @@ public class FantasyTeamsDTO {
 		this.teamName = teamName;
 	}
 
+	public FantasyTeamsDTO(String teamName) {
+		super();
+		this.teamName = teamName;
+	}
+
 
 	public Long getTeamId() {
 		return teamId;

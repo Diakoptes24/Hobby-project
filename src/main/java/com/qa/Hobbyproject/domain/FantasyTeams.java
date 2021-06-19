@@ -66,13 +66,13 @@ public class FantasyTeams {
 		this.teamName = teamName;
 	}
 
-//	public List<Players> getPlayers() {
-//		return players;
-//	}
-//
-//	public void setPlayers(List<Players> players) {
-//		this.players = players;
-//	}
+	public List<Players> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(List<Players> players) {
+		this.players = players;
+	}
 
 	@Override
 	public String toString() {
