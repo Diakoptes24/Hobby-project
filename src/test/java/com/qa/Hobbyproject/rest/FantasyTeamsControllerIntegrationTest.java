@@ -27,7 +27,7 @@ import com.qa.Hobbyproject.domain.FantasyTeams;
 import com.qa.Hobbyproject.dto.FantasyTeamsDTO;
 import com.qa.Hobbyproject.dto.PlayersDTO;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT) // prevents port conflicts
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT) 
 @AutoConfigureMockMvc
 @Sql(scripts = { "classpath:teamsTest-schema.sql",
 		"classpath:teamsTest-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
@@ -35,7 +35,7 @@ import com.qa.Hobbyproject.dto.PlayersDTO;
 public class FantasyTeamsControllerIntegrationTest {
 
 	@Autowired
-	private MockMvc mvc; // allows us to send mock requests
+	private MockMvc mvc; 
 
 	@Autowired
 	private ObjectMapper mapper;
