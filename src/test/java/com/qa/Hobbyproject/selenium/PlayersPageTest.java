@@ -10,7 +10,6 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,16 +28,15 @@ public class PlayersPageTest {
 	private static WebElement targ;
 	
 	@BeforeAll
-	public void setup() {
+	public static void setup() {
 		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-		ChromeOptions chromeConfig = new ChromeOptions();
-		driver = new ChromeDriver(chromeConfig);
-		//driver.manage().window().setSize(new Dimension(1366, 768));
+		driver = new ChromeDriver();
+		driver.manage().window().setSize(new Dimension(1366, 768));
 	}
 	
 	@Test
 	public void testCreatePlayer() {
-		driver.get("https://localhost:8080/Player.html");
+		driver.get("http://localhost:8080/Player.html");
 		
 		targ = driver.findElement(By.xpath("/html/body/button"));
 		targ.click();
@@ -58,15 +56,18 @@ public class PlayersPageTest {
 		targ = driver.findElement(By.xpath("//*[@id=\"createPlayer\"]/button"));
 		targ.click();
 		
-		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("/html/body/main/div[1]/table/tbody/tr[3]")));
+		targ = driver.findElement(By.xpath("//*[@id=\"playerModal\"]/div/div/div[1]/button"));
+		targ.click();
 		
-		assertEquals("3", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[3]/td[2]")).getText());
-		assertEquals("HaksaL", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[3]/td[2]")).getText());
-		assertEquals("Flex DPS", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[3]/td[2]")).getText());
+		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]")));
+		
+		assertEquals("2", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[2]/td[2]")).getText());
+		assertEquals("Haksal", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[2]/td[3]")).getText());
+		assertEquals("Flex DPS", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[2]/td[4]")).getText());
 	}
 	
 	@AfterAll
-	public void tearDown() {
+	public static void tearDown() {
 		driver.quit();
 	}
 }
