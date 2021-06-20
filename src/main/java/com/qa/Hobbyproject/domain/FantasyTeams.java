@@ -22,7 +22,7 @@ public class FantasyTeams {
 	private String teamName;
 
 	@OneToMany(mappedBy = "fantasyTeams")
-	//@JsonIgnore
+	@JsonIgnore
 	private List<Players> players;
 
 	public FantasyTeams() {
