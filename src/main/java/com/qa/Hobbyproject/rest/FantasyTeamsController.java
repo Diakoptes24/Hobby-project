@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.qa.Hobbyproject.domain.FantasyTeams;
 import com.qa.Hobbyproject.dto.FantasyTeamsDTO;
 import com.qa.Hobbyproject.service.FantasyTeamsService;
 
@@ -29,7 +28,7 @@ public class FantasyTeamsController {
 	}
 	
 	@PostMapping("/create")
-	public FantasyTeamsDTO createFantasyTeam(@RequestBody FantasyTeams fantasyTeams) {
+	public FantasyTeamsDTO createFantasyTeam(@RequestBody FantasyTeamsDTO fantasyTeams) {
 		return this.fantasyTeamsService.createFantasyTeam(fantasyTeams);
 	}
 	
@@ -44,7 +43,7 @@ public class FantasyTeamsController {
 //	}
 	
 	@PutMapping("/update/{teamId}")
-	public FantasyTeamsDTO updateTeam(@RequestBody FantasyTeams fantasyTeams, @PathVariable Long teamId) {
+	public FantasyTeamsDTO updateTeam(@RequestBody FantasyTeamsDTO fantasyTeams, @PathVariable Long teamId) {
 		return this.fantasyTeamsService.updateTeam(teamId, fantasyTeams);
 	}
 	

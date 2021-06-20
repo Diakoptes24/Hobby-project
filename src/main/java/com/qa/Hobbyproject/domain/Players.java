@@ -23,7 +23,7 @@ public class Players {
 	@Column 
 	private String role;
 	
-//	@JoinColumn(name = "fantasy_teams", referencedColumnName = "teamId")
+//	@JoinColumn(name = "fantasy_teams_team_id", referencedColumnName = "teamId")
 	@ManyToOne
 	//@JsonIgnore
 	private FantasyTeams fantasyTeams;

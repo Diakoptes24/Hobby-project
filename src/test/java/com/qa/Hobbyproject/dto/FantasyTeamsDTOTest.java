@@ -1,10 +1,8 @@
 package com.qa.Hobbyproject.dto;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.qa.Hobbyproject.domain.FantasyTeams;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
 

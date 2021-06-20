@@ -1,13 +1,13 @@
 package com.qa.Hobbyproject;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.qa.Hobbyproject.domain.FantasyTeams;
-import com.qa.Hobbyproject.domain.Players;
-import com.qa.Hobbyproject.repo.FantasyTeamsRepo;
-import com.qa.Hobbyproject.repo.PlayersRepo;
+//import com.qa.Hobbyproject.domain.FantasyTeams;
+//import com.qa.Hobbyproject.domain.Players;
+//import com.qa.Hobbyproject.repo.FantasyTeamsRepo;
+//import com.qa.Hobbyproject.repo.PlayersRepo;
 
 @SpringBootApplication
 public class HobbyProjectApplication {

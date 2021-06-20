@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 
-import com.qa.Hobbyproject.domain.FantasyTeams;
 import com.qa.Hobbyproject.dto.FantasyTeamsDTO;
 import com.qa.Hobbyproject.service.FantasyTeamsService;
 
@@ -28,16 +27,17 @@ public class FantasyTeamsControllerUnitTest {
 	@Test
 	void testCreatePlayer() {
 		//given
-		FantasyTeams testData = new FantasyTeams("Florida Mayhem");
+		//FantasyTeams testData = new FantasyTeams("Florida Mayhem");
+		FantasyTeamsDTO newDTO1 = new FantasyTeamsDTO("Florida Mayhem");
 		FantasyTeamsDTO newDTO = new FantasyTeamsDTO(3L, "Florida Mayhem");
 		
 		//when
-		Mockito.when(this.service.createFantasyTeam(testData)).thenReturn(newDTO);
+		Mockito.when(this.service.createFantasyTeam(newDTO1)).thenReturn(newDTO);
 		
 		//then
-		assertThat(this.controller.createFantasyTeam(testData)).isEqualTo(newDTO);
+		assertThat(this.controller.createFantasyTeam(newDTO1)).isEqualTo(newDTO);
 		
-		Mockito.verify(this.service, Mockito.times(1)).createFantasyTeam(testData);
+		Mockito.verify(this.service, Mockito.times(1)).createFantasyTeam(newDTO1);
 	}
 	
 	@Test
@@ -56,16 +56,17 @@ public class FantasyTeamsControllerUnitTest {
 	void testUpdateTeams() {
 		// GIVEN
 		Long testId = 1L;
-		FantasyTeams testData = new FantasyTeams("Florida Mayhem");
+		//FantasyTeams testData = new FantasyTeams("Florida Mayhem");
+		FantasyTeamsDTO DTO = new FantasyTeamsDTO("Florida Mayhem");
 		FantasyTeamsDTO updatedDTO = new FantasyTeamsDTO(testId, "Florida Mayhem");
 
 		// WHEN
 		
-		Mockito.when(this.service.updateTeam(testId, testData)).thenReturn(updatedDTO);
+		Mockito.when(this.service.updateTeam(testId, DTO)).thenReturn(updatedDTO);
 
 		// THEN
-		assertThat(this.service.updateTeam(testId, testData)).isEqualTo(updatedDTO);
-		Mockito.verify(this.service, Mockito.times(1)).updateTeam(testId, testData);
+		assertThat(this.service.updateTeam(testId, DTO)).isEqualTo(updatedDTO);
+		Mockito.verify(this.service, Mockito.times(1)).updateTeam(testId, DTO);
 	}
 	
 	@Test
