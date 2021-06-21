@@ -21,6 +21,7 @@ public class PlayersController {
 	
 	private PlayersService playersService;
 
+	
 	@Autowired
 	public PlayersController(PlayersService playersService) {
 		super();
@@ -41,6 +42,11 @@ public class PlayersController {
 	@PutMapping("/update/{playerId}")
 	public PlayersDTO updatePlayer(@RequestBody PlayersDTO players, @PathVariable Long playerId) {
 		return this.playersService.updatePlayer(playerId, players);
+	}
+	
+	@GetMapping("/findbyteamid/{teamId}")
+	public List<PlayersDTO> getPlayersByTeamId(@PathVariable Long teamId) {
+		return this.playersService.findPlayerByTeamId(teamId);
 	}
 	
 	@DeleteMapping("/remove/{playerId}")

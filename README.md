@@ -8,33 +8,57 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 What things you need to install the software and how to install them
 
-Java 14 
+Java 14 - https://www.oracle.com/java/technologies/javase/jdk14-archive-downloads.html
 
-MYSQL 8
+OpenJDK - https://adoptopenjdk.net/
 
-Maven
+MYSQL 8 - https://dev.mysql.com/downloads/installer/
 
-Spring
+Maven - https://maven.apache.org/download.cgi
 
-Git
+Spring - https://spring.io/tools
 
-For installing Java follow the instructions here: https://qa-community.co.uk/~/_/learning/java-beginner/java--installation For installing MYSQL follow the instructions here: https://qa-community.co.uk/~/_/learning/databases-introduction/databases--installation
+Git - https://git-scm.com/downloads
 
-Give examples
+Eclipse - https://www.eclipse.org/downloads/
+
+For installing Java follow the instructions here: https://qa-community.co.uk/~/_/learning/java-beginner/java--installation 
+For installing MYSQL follow the instructions here: https://qa-community.co.uk/~/_/learning/databases-introduction/databases--installation
+
 ### Installing
-Installing the appliation requires cloning the git repository to your local system.
-First, in Git Bash, change to whichever directory you would like to clone the repository down to using (desktop is just an example):
+Installing the application requires cloning the git repository to your local system.
+First, in Git Bash (assuming you've already downloaded and installed it), change to whichever directory you would like to clone the repository down to using (desktop is just an example):
 ```
 cd desktop
+
 ```
+Alternatively you can right click in the folder you want to clone to and select "Git Bash Here"
+
 Use the following command to clone the git repository to your system:
 ```
 git clone https://github.com/Diakoptes24/Hobby-project.git
 ```
 
+To run the application you will need to either run the jar file or import the repository into an IDE such as Eclipse.
+
+To run the jar file open Git Bash and run use the following command:
+```
+java -jar Hobby-project 0.0.1-SNAPSHOT.jar
+```
+
+If using Eclipse, import the project into you workspace:
+*Navigate to file and then select Import
+*Choose existing maven projects in the maven folder
+*Choose the location of this cloned repository
+*Finish
+Once import run the "HobbyProjectApplication.java" as a Spring Boot App.
+
+Once the program is running via either method, navigate to http://localhost:8080/ to access the site.
 
 ### Running the tests
-The tests in this project were carried out with Junit and mockito within eclipse.
+The tests in this project were carried out with Junit, Mockito and Selenium.
+To run all the tests right click the project folder in the package explorer and navigate to coverage as and select 2 JUnit test.
+The tests run on a local h2 database, with the test cases not affecting each other thanks to it resetting before each
 
 ### Unit Tests
 Explain what these tests test, why and how to run them
@@ -46,8 +70,12 @@ And coding style tests
 ## Deployment
 Add additional notes about how to deploy this on a live system
 
+##Sonarqube
+Sonarqube identified 0 bugs, 2 vulnerabilities and 67 code smells. The vulnerabilities simply required replacing a persistent entity with a DTO object, while the code smells consisted mostly of commented out code blocks needing to be deleted, unused imports and some test methods being public.
 ## Jira
-You can find the Jira board for this project here: (I could not find the link function)
+Here is the invite link: https://id.atlassian.com/invite/p/jira-software?id=hBb54fz-Sy-obZQJWO7D2w
+You can find the Jira board for this project here: https://ims-scotts.atlassian.net/jira/software/projects/HP/issues/
+
 
 ## Built With
 Maven - Dependency Management

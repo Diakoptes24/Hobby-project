@@ -12,7 +12,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 
 import com.qa.hobbyproject.dto.FantasyTeamsDTO;
-import com.qa.hobbyproject.rest.FantasyTeamsController;
 import com.qa.hobbyproject.service.FantasyTeamsService;
 
 @SpringBootTest

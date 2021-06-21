@@ -1,6 +1,7 @@
 package com.qa.hobbyproject.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
@@ -43,6 +44,12 @@ public class FantasyTeamsService {
 		FantasyTeams updated = this.fantasyTeamsRepo.save(existing); // save it back to overwrite original
 
 		return this.fantasyTeamsMapper.map(updated, FantasyTeamsDTO.class);
+	}
+	
+	public FantasyTeamsDTO findTeam(Long teamId) {
+		Optional<FantasyTeams> optionalTeams = this.fantasyTeamsRepo.findById(teamId);
+		FantasyTeams found = optionalTeams.orElseThrow(() -> new EntityNotFoundException());
+		return this.fantasyTeamsMapper.map(found, FantasyTeamsDTO.class);
 	}
 	
 	public boolean deleteTeam(Long teamId) {
