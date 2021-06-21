@@ -104,11 +104,11 @@ class PlayersPageTest {
 		targ.click();
 		
 		
-		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]")));
+		new WebDriverWait(driver, 5).until(ExpectedConditions.invisibilityOfElementLocated(By.id("uPlayerModal")));
 		
-		assertEquals("1", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]/td[2]")).getText());
-		assertEquals("Fearless", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]/td[3]")).getText());
-		assertEquals("Main Tank", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]/td[4]")).getText());
+		assertEquals("1", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr/td[2]")).getText());
+		assertEquals("Fearless", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr/td[3]")).getText());
+		assertEquals("Main Tank", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr/td[4]")).getText());
 	}
 	
 	@Test 

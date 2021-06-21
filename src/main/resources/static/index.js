@@ -92,9 +92,11 @@ document.getElementById("createPlayer").addEventListener("submit", function (eve
         role: this.role.value,
 
     }
+    console.log(data);
 
     axios.post(`/players/create/${teamId}`, data)
         .then(res => {
+            console.log(res);
             getPlayers();
             this.reset();
             this.make.focus();
