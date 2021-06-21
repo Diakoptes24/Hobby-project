@@ -9,6 +9,7 @@ import javax.persistence.EntityNotFoundException;
 
 import org.springframework.stereotype.Service;
 
+import com.qa.Hobbyproject.domain.FantasyTeams;
 import com.qa.Hobbyproject.domain.Players;
 import com.qa.Hobbyproject.dto.PlayersDTO;
 import com.qa.Hobbyproject.repo.PlayersRepo;
@@ -27,7 +28,8 @@ public class PlayersService {
 		this.playersMapper = playersMapper;
 	}
 	
-	public PlayersDTO createPlayer(Players players) {
+	public PlayersDTO createPlayer(PlayersDTO players) {
+		var player = this.playersMapper.mapFromDTO(players);
 		Players saved = this.playersRepo.save(players);
 		return this.playersMapper.mapToDTO(saved);
 	}
@@ -36,7 +38,7 @@ public class PlayersService {
 		return this.playersRepo.findAll().stream().map(player -> this.playersMapper.mapToDTO(player)).collect(Collectors.toList());
 	}
 	
-	public PlayersDTO updatePlayer(Long playerId, Players newData) {
+	public PlayersDTO updatePlayer(Long playerId, PlayersDTO newData) {
 		Players existing = this.playersRepo.findById(playerId).orElseThrow(() -> new EntityNotFoundException()); // fetch existing from
 																								// db
 		existing.setPlayerIGN(newData.getPlayerIGN()); // update the values
@@ -46,12 +48,6 @@ public class PlayersService {
 
 		return this.playersMapper.mapToDTO(updated);
 	}
-	
-//	public PlayersDTO findPlayer(Long playerId) {
-//		Optional<Players> optionalPlayers = this.playersRepo.findById(playerId);
-//		Players found = optionalPlayers.orElseThrow(() -> new EntityNotFoundException());
-//		return this.playersMapper.mapToDTO(found);
-//	}
 	
 	public boolean deletePlayer(Long playerId) {
 		this.playersRepo.deleteById(playerId);

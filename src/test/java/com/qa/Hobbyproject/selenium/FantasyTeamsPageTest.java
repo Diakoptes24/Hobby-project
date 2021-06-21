@@ -23,7 +23,7 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 @Sql(scripts = { "classpath:teamsTest-schema.sql",
 		"classpath:teamsTest-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("test")
-public class FantasyTeamsPageTest {
+class FantasyTeamsPageTest {
 
 	private static WebDriver driver;
 	private static WebElement targ;
@@ -36,7 +36,7 @@ public class FantasyTeamsPageTest {
 	}
 	
 	@Test
-	public void testCreateTeam() {
+	void testCreateTeam() {
 		driver.get("http://localhost:8080/Team.html");
 		
 		targ = driver.findElement(By.xpath("/html/body/button"));
@@ -59,7 +59,7 @@ public class FantasyTeamsPageTest {
 	}
 	
 	@Test
-	public void testRead() {
+	void testRead() {
 		driver.get("http://localhost:8080/Team.html");
 		
 		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]")));
@@ -70,7 +70,7 @@ public class FantasyTeamsPageTest {
 	}
 	
 	@Test
-	public void testUpdateTeam() {
+	void testUpdateTeam() {
 		driver.get("http://localhost:8080/Team.html");
 		
 		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]")));
@@ -88,9 +88,6 @@ public class FantasyTeamsPageTest {
 		targ = driver.findElement(By.xpath("//*[@id=\"updateTeamButton\"]"));
 		targ.click();
 		
-//		targ = driver.findElement(By.xpath("//*[@id=\"uPlayerModal\"]/div/div/div[1]/button"));
-//		targ.click();
-		
 		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]")));
 		
 		assertEquals("1", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]/td[2]")).getText());
@@ -99,7 +96,7 @@ public class FantasyTeamsPageTest {
 	}
 	
 	@Test 
-	public void testDeleteTeam() {
+	void testDeleteTeam() {
 		driver.get("http://localhost:8080/Team.html");
 		
 		targ = driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]/td[4]/button"));

@@ -32,7 +32,7 @@ import com.qa.Hobbyproject.dto.PlayersDTO;
 @Sql(scripts = { "classpath:teamsTest-schema.sql",
 		"classpath:teamsTest-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("test")
-public class FantasyTeamsControllerIntegrationTest {
+class FantasyTeamsControllerIntegrationTest {
 
 	@Autowired
 	private MockMvc mvc; 

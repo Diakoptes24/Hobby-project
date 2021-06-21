@@ -16,7 +16,7 @@ import com.qa.Hobbyproject.service.FantasyTeamsService;
 
 @SpringBootTest
 @ActiveProfiles("test")
-public class FantasyTeamsControllerUnitTest {
+class FantasyTeamsControllerUnitTest {
 
 	@Autowired
 	private FantasyTeamsController controller;
@@ -78,7 +78,7 @@ public class FantasyTeamsControllerUnitTest {
 		Mockito.when(this.service.deleteTeam(testId)).thenReturn(true);
 
 		//then
-		assertThat(this.controller.delete(testId)).isEqualTo(true);
+		assertThat(this.controller.delete(testId)).isTrue();
 
 		Mockito.verify(this.service, Mockito.times(1)).deleteTeam(testId);
 	}

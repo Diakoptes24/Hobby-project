@@ -23,7 +23,7 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 @Sql(scripts = { "classpath:fantasyTeams-schema.sql",
 		"classpath:fantasyTeams-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("test")
-public class PlayersPageTest {
+class PlayersPageTest {
 
 	private static WebDriver driver;
 	private static WebElement targ;
@@ -36,7 +36,7 @@ public class PlayersPageTest {
 	}
 	
 	@Test
-	public void testCreatePlayer() {
+	void testCreatePlayer() {
 		driver.get("http://localhost:8080/Player.html");
 		
 		targ = driver.findElement(By.xpath("/html/body/button"));
@@ -68,7 +68,7 @@ public class PlayersPageTest {
 	}
 	
 	@Test
-	public void testRead() {
+	void testRead() {
 		driver.get("http://localhost:8080/Player.html");
 		
 		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]")));
@@ -79,7 +79,7 @@ public class PlayersPageTest {
 	}
 	
 	@Test
-	public void testUpdatePlayer() {
+	void testUpdatePlayer() {
 		driver.get("http://localhost:8080/Player.html");
 		
 		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]")));
@@ -103,8 +103,6 @@ public class PlayersPageTest {
 		targ = driver.findElement(By.xpath("//*[@id=\"updatePlayerButton\"]"));
 		targ.click();
 		
-//		targ = driver.findElement(By.xpath("//*[@id=\"uPlayerModal\"]/div/div/div[1]/button"));
-//		targ.click();
 		
 		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]")));
 		
@@ -114,7 +112,7 @@ public class PlayersPageTest {
 	}
 	
 	@Test 
-	public void testDeletePlayer() {
+	void testDeletePlayer() {
 		driver.get("http://localhost:8080/Player.html");
 		
 		targ = driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]/td[5]/button"));

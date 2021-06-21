@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.qa.Hobbyproject.domain.Players;
 import com.qa.Hobbyproject.dto.PlayersDTO;
 import com.qa.Hobbyproject.service.PlayersService;
 
@@ -29,8 +28,8 @@ public class PlayersController {
 	}
 	
 	@PostMapping("/create")
-	public PlayersDTO createPlayer(@RequestBody Players players) {
-		return this.playersService.createPlayer(players);
+	public PlayersDTO createPlayer(@RequestBody PlayersDTO playersDTO) {
+		return this.playersService.createPlayer(playersDTO);
 	}
 	
 	@GetMapping("/")
@@ -38,13 +37,9 @@ public class PlayersController {
 		return this.playersService.getPlayers();
 	}
 	
-//	@GetMapping("/find/{id}")
-//	public PlayersDTO find(@PathVariable Long playerId) {
-//		return this.playersService.findPlayer(playerId);
-//	}
 	
 	@PutMapping("/update/{playerId}")
-	public PlayersDTO updatePlayer(@RequestBody Players players, @PathVariable Long playerId) {
+	public PlayersDTO updatePlayer(@RequestBody PlayersDTO players, @PathVariable Long playerId) {
 		return this.playersService.updatePlayer(playerId, players);
 	}
 	
@@ -52,11 +47,7 @@ public class PlayersController {
 	public boolean delete(@PathVariable Long playerId) {
 		return this.playersService.deletePlayer(playerId);
 	}
-//	@GetMapping("/populate")
-//	public String addOptions(Players players, Model model){
-//	    model.addAttribute("players", PlayersRepo.findBySubRoleIgnoreCase(getSubRole()));
-//	    return "addOptions";
-//	}
+
 
 	
 	

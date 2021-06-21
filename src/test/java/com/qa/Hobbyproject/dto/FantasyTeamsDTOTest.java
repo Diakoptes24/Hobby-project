@@ -9,7 +9,7 @@ import nl.jqno.equalsverifier.EqualsVerifier;
 class FantasyTeamsDTOTest {
 
 	@Test
-	public void equalsHashCodeTest() {
+	void equalsHashCodeTest() {
 		
 		//FantasyTeams teamOne = 
 		

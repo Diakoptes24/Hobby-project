@@ -37,10 +37,6 @@ public class FantasyTeamsController {
 		return this.fantasyTeamsService.getFantasyTeams();
 	}
 	
-//	@GetMapping("/find/{Id}")
-//	public FantasyTeamsDTO find(@PathVariable Long teamId) {
-//		return this.fantasyTeamsService.findTeam(teamId);
-//	}
 	
 	@PutMapping("/update/{teamId}")
 	public FantasyTeamsDTO updateTeam(@RequestBody FantasyTeamsDTO fantasyTeams, @PathVariable Long teamId) {

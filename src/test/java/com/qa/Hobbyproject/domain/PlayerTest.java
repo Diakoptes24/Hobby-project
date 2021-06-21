@@ -1,5 +1,6 @@
 package com.qa.Hobbyproject.domain;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,7 +32,7 @@ class PlayerTest {
 	
 		assertTrue(firstPlayer.equals(secondPlayer) && secondPlayer.equals(firstPlayer));
 
-	    assertTrue(firstPlayer.hashCode() == secondPlayer.hashCode());
+	    assertEquals(firstPlayer.hashCode(), secondPlayer.hashCode());
 	    
 	}
 }
