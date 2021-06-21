@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import com.qa.hobbyproject.domain.FantasyTeams;
 
 
-
 class FantasyTeamsTest {
 
 	@Test

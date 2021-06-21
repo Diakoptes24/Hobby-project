@@ -1,11 +1,15 @@
 //'use strict';
 
+const urlParams = new URLSearchParams(window.location.search);
+const teamId = urlParams.get('teamId');
+
+console.log(teamId);
 
 const getPlayers = async () => {
     const tBody = document.querySelector("tbody");
     tBody.innerHTML = "";
-    const res = await axios.get("/players/");
-    // output.innerHTML = "";
+    const res = await axios.get(`/players/`);
+    console.log(res.data);
     res.data.forEach(player => {
         renderPlayers(player)
     });
