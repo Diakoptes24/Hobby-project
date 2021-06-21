@@ -71,6 +71,9 @@ getTeams();
 //create
 document.getElementById("createTeam").addEventListener("submit", function (event) {
     event.preventDefault();
+    let updateModal = document.getElementById('teamModal');
+    let modal = bootstrap.Modal.getInstance(updateModal);
+    modal.hide();
 
     const data = {
 
@@ -91,6 +94,9 @@ document.getElementById("createTeam").addEventListener("submit", function (event
 
 document.getElementById("updateTeam").addEventListener("submit", function (event) {
     event.preventDefault();
+    let updateModal = document.getElementById('uTeamModal');
+    let modal = bootstrap.Modal.getInstance(updateModal);
+    modal.hide();
 
     const teamID = document.getElementById("updateTeamButton").getAttribute("teamID")
     const data = {
@@ -102,9 +108,9 @@ document.getElementById("updateTeam").addEventListener("submit", function (event
 
     axios.put(`/fantasyteams/update/${teamID}`, data)
         .then(res => {
-            getteams();
+            getTeams();
             this.reset();
-            this.teamName.focus();
+            // this.teamName.focus();
         }).catch(err => console.log(err));
 
     console.log(this);
