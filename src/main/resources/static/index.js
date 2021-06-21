@@ -1,15 +1,5 @@
 //'use strict';
 
-// const output = document.getElementById("output");
-
-// const getPlayers = async () => {
-//     const res = await axios.get("/hwa/");
-//     output.innerHTML = "";
-//     res.data.forEach(player => renderPlayers(player));
-// }
-
-//read
-//const output = document.getElementById("output");
 
 const getPlayers = async () => {
     const tBody = document.querySelector("tbody");
@@ -20,6 +10,16 @@ const getPlayers = async () => {
         renderPlayers(player)
     });
 }
+
+// const getTeams = async () => {
+//     // const tBody = document.querySelector("tbody");
+//     // tBody.innerHTML = "";
+//     const team = await axios.get("/fantasyteams/");
+//     // output.innerHTML = "";
+//     // team.data.forEach(player => {
+//     //     renderPlayers(player)
+//     // });
+// }
 
 const renderPlayers = player => {
     const tBody = document.querySelector("tbody");
@@ -77,10 +77,14 @@ const deletePlayer = (playerId) => {
 
 }
 
+// getTeams(teamId);
 getPlayers();
 //create
 document.getElementById("createPlayer").addEventListener("submit", function (event) {
     event.preventDefault();
+    let updateModal = document.getElementById('playerModal');
+    let modal = bootstrap.Modal.getInstance(updateModal);
+    modal.hide();
 
     const data = {
 
@@ -88,9 +92,11 @@ document.getElementById("createPlayer").addEventListener("submit", function (eve
         role: this.role.value,
 
     }
+    console.log(data);
 
-    axios.post("/players/create", data)
+    axios.post(`/players/create/${teamId}`, data)
         .then(res => {
+            console.log(res);
             getPlayers();
             this.reset();
             this.make.focus();
