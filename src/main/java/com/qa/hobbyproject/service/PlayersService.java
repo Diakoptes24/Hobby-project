@@ -20,23 +20,23 @@ public class PlayersService {
 
 	private PlayersRepo playersRepo;
 	
-	private ModelMapper playersMapper;
+	private ModelMapper mapper;
 
 	public PlayersService(PlayersRepo playersRepo, ModelMapper playersMapper) {
 		super();
 		this.playersRepo = playersRepo;
-		this.playersMapper = playersMapper;
+		this.mapper = playersMapper;
 	}
 	
 	public PlayersDTO createPlayer(Long teamId, PlayersDTO playersDTO) {
-		var player = this.playersMapper.map(playersDTO, Players.class);
+		var player = this.mapper.map(playersDTO, Players.class);
 		player.setFantasyTeams(new FantasyTeams(teamId, ""));
 		Players saved = this.playersRepo.save(player);
-		return this.playersMapper.map(saved, PlayersDTO.class);
+		return this.mapper.map(saved, PlayersDTO.class);
 	}
 	
 	public List<PlayersDTO> getPlayers() {
-		return this.playersRepo.findAll().stream().map(player -> this.playersMapper.map(player, PlayersDTO.class)).collect(Collectors.toList());
+		return this.playersRepo.findAll().stream().map(player -> this.mapper.map(player, PlayersDTO.class)).collect(Collectors.toList());
 		
 	}
 	
@@ -48,8 +48,15 @@ public class PlayersService {
 
 		Players updated = this.playersRepo.save(existing); // save it back to overwrite original
 
-		return this.playersMapper.map(updated,PlayersDTO.class);
+		return this.mapper.map(updated,PlayersDTO.class);
 	}
+	
+	public List<PlayersDTO> findPlayerByTeamId(Long teamId) {
+		return this.playersRepo.findAllByFantasyTeamsTeamId(teamId).stream().map(player -> this.mapper.map(player, PlayersDTO.class)).collect(Collectors.toList());
+//	Optional<Players> optionalPlayers = this.playersRepo.findById(teamId);
+//	Players found = optionalPlayers.orElseThrow(() -> new EntityNotFoundException());
+//	return this.playersMapper.map(found, PlayersDTO.class);
+}
 	
 	public boolean deletePlayer(Long playerId) {
 		this.playersRepo.deleteById(playerId);

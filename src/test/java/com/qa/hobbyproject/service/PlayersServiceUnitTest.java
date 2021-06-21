@@ -13,12 +13,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 
-import com.qa.hobbyproject.domain.FantasyTeams;
+
 import com.qa.hobbyproject.domain.Players;
-import com.qa.hobbyproject.dto.FantasyTeamsDTO;
+
 import com.qa.hobbyproject.dto.PlayersDTO;
 import com.qa.hobbyproject.repo.PlayersRepo;
-import com.qa.hobbyproject.service.PlayersService;
+
 
 @SpringBootTest
 @ActiveProfiles("test")

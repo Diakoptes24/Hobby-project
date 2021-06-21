@@ -12,6 +12,7 @@ const getTeams = async () => {
 const renderTeam = team => {
     const tBody = document.querySelector("tbody");
     const tRow = document.createElement("tr");
+    tRow.setAttribute("teamId", team.teamId)
 
     tRow.appendChild(update(team));
     tRow.appendChild(generateCell(team.teamId));
@@ -20,6 +21,7 @@ const renderTeam = team => {
     // tRow.appendChild(generateCell(team.role));
     // tRow.appendChild(update(team));
     tRow.appendChild(deleteTeam(team.teamId));
+    tRow.appendChild(openTeam(team.teamId));
 
 
     tBody.appendChild(tRow);
@@ -62,9 +64,17 @@ const deleteTeam = (teamId) => {
 
     tCell.appendChild(deleteBTeam);
     return tCell;
+}
 
-
-
+const openTeam = (teamId) => {
+    const tCell = document.createElement("td");
+    var a = document.createElement('a');
+    var linkPlayer = document.createTextNode("Add players");
+    a.appendChild(linkPlayer);
+    a.title = "Add players";
+    a.href = "Player.html?teamId=" + teamId;
+    tCell.appendChild(a);
+    return tCell;
 }
 
 getTeams();

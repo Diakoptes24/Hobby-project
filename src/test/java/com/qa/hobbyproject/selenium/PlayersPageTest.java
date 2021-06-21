@@ -35,37 +35,37 @@ class PlayersPageTest {
 		driver.manage().window().setSize(new Dimension(1366, 768));
 	}
 	
-	@Test
-	void testCreatePlayer() {
-		driver.get("http://localhost:8080/Player.html");
-		
-		targ = driver.findElement(By.xpath("/html/body/button"));
-		targ.click();
-		
-		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("playerModal")));
-		
-		targ = driver.findElement(By.id("playerIGN"));
-		targ.click();
-		targ.sendKeys("Haksal");
-		
-		targ = driver.findElement(By.id("role"));
-		targ.click();
-		
-		targ = driver.findElement(By.xpath("//*[@id=\"role\"]/option[4]"));
-		targ.click();
-		
-		targ = driver.findElement(By.xpath("//*[@id=\"createPlayer\"]/button"));
-		targ.click();
-		
-//		targ = driver.findElement(By.xpath("//*[@id=\"playerModal\"]/div/div/div[1]/button"));
+//	@Test
+//	void testCreatePlayer() {
+//		driver.get("http://localhost:8080/Player.html");
+//		
+//		targ = driver.findElement(By.xpath("/html/body/button"));
 //		targ.click();
-		
-		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/div[1]/table/tbody/tr[2]")));
-		
-		assertEquals("2", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[2]/td[2]")).getText());
-		assertEquals("Haksal", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[2]/td[3]")).getText());
-		assertEquals("Flex DPS", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[2]/td[4]")).getText());
-	}
+//		
+//		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("playerModal")));
+//		
+//		targ = driver.findElement(By.id("playerIGN"));
+//		targ.click();
+//		targ.sendKeys("Haksal");
+//		
+//		targ = driver.findElement(By.id("role"));
+//		targ.click();
+//		
+//		targ = driver.findElement(By.xpath("//*[@id=\"role\"]/option[4]"));
+//		targ.click();
+//		
+//		targ = driver.findElement(By.xpath("//*[@id=\"createPlayer\"]/button"));
+//		targ.click();
+//		
+////		targ = driver.findElement(By.xpath("//*[@id=\"playerModal\"]/div/div/div[1]/button"));
+////		targ.click();
+//		
+//		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/div[1]/table/tbody/tr[2]")));
+//		
+//		assertEquals("2", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[2]/td[2]")).getText());
+//		assertEquals("Haksal", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[2]/td[3]")).getText());
+//		assertEquals("Flex DPS", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[2]/td[4]")).getText());
+//	}
 	
 	@Test
 	void testRead() {
