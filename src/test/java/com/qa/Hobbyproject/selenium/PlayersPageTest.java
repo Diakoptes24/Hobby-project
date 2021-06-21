@@ -1,6 +1,7 @@
 package com.qa.Hobbyproject.selenium;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -59,13 +60,71 @@ public class PlayersPageTest {
 		targ = driver.findElement(By.xpath("//*[@id=\"playerModal\"]/div/div/div[1]/button"));
 		targ.click();
 		
-		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]")));
+		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/div[1]/table/tbody/tr[2]")));
 		
 		assertEquals("2", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[2]/td[2]")).getText());
 		assertEquals("Haksal", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[2]/td[3]")).getText());
 		assertEquals("Flex DPS", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[2]/td[4]")).getText());
 	}
 	
+	@Test
+	public void testRead() {
+		driver.get("http://localhost:8080/Player.html");
+		
+		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]")));
+		
+		assertEquals("1", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]/td[2]")).getText());
+		assertEquals("Yaki", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]/td[3]")).getText());
+		assertEquals("Flex DPS", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]/td[4]")).getText());
+	}
+	
+	@Test
+	public void testUpdatePlayer() {
+		driver.get("http://localhost:8080/Player.html");
+		
+		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]")));
+		
+		targ = driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]/td[1]/button"));
+		targ.click();
+		
+		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("uPlayerModal")));
+		
+		targ = driver.findElement(By.id("updatePlayerIGN"));
+		targ.click();
+		targ.clear();
+		targ.sendKeys("Fearless");
+		
+		targ = driver.findElement(By.id("updateRole"));
+		targ.click();
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"updateRole\"]/option[1]"));
+		targ.click();
+		
+		targ = driver.findElement(By.xpath("//*[@id=\"updatePlayerButton\"]"));
+		targ.click();
+		
+//		targ = driver.findElement(By.xpath("//*[@id=\"uPlayerModal\"]/div/div/div[1]/button"));
+//		targ.click();
+		
+		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]")));
+		
+		assertEquals("1", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]/td[2]")).getText());
+		assertEquals("Fearless", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]/td[3]")).getText());
+		assertEquals("Main Tank", driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]/td[4]")).getText());
+	}
+	
+	@Test 
+	public void testDeletePlayer() {
+		driver.get("http://localhost:8080/Player.html");
+		
+		targ = driver.findElement(By.xpath("/html/body/main/div[1]/table/tbody/tr[1]/td[5]/button"));
+		targ.click();
+		
+		new WebDriverWait(driver, 5).until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("/html/body/main/div[1]/table/tbody/tr")));
+		
+		assertTrue(driver.findElements(By.xpath("/html/body/main/div[1]/table/tbody/tr")).size() < 1);
+		
+	}
 	@AfterAll
 	public static void tearDown() {
 		driver.quit();
