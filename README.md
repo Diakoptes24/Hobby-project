@@ -1,6 +1,5 @@
 # Hobby-project
 # Hobby Web Application - Overwatch League Fantasy Team Builder
-
 #Please note I forgot to do a commit before my before 17:30 push, so several hours worth of bug fixing didn't make it in. It's pushed into this final, slightly late commit; please please please please use this final commit that was a few minutes past
 
 This project's purpose was to build a full stack hobby web application, in this case building a fantasy team for the overwatch league. It implements full CRUD functionality, allowing the user to alter both the players and the teams they are on.
