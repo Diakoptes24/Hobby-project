@@ -24,8 +24,10 @@ import org.springframework.test.web.servlet.ResultMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.Hobbyproject.domain.FantasyTeams;
+import com.qa.Hobbyproject.dto.FantasyTeamsDTO;
+import com.qa.Hobbyproject.dto.PlayersDTO;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT) // prevents port conflicts
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT) 
 @AutoConfigureMockMvc
 @Sql(scripts = { "classpath:teamsTest-schema.sql",
 		"classpath:teamsTest-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
@@ -33,7 +35,7 @@ import com.qa.Hobbyproject.domain.FantasyTeams;
 public class FantasyTeamsControllerIntegrationTest {
 
 	@Autowired
-	private MockMvc mvc; // allows us to send mock requests
+	private MockMvc mvc; 
 
 	@Autowired
 	private ObjectMapper mapper;
@@ -70,13 +72,20 @@ public class FantasyTeamsControllerIntegrationTest {
 	
 	@Test
 	void testupdateTeam() throws Exception {
-		FantasyTeams testTeams = new FantasyTeams(1L, "Dallas Fuel");
+		FantasyTeams testTeams = new FantasyTeams(1L, "Surrey Stags");
 		String testTeamsAsJSON = this.mapper.writeValueAsString(testTeams);
+		
+		PlayersDTO newPlayer = new PlayersDTO(1L, "DQ", "Off Tank");
+		List<PlayersDTO> playersList = List.of(newPlayer);
+		
+		FantasyTeamsDTO updatedDTO = new FantasyTeamsDTO(1L, "Surrey Stags", playersList);
+		String updatedDTOAsJSON = this.mapper.writeValueAsString(updatedDTO);
+		
 		
 		RequestBuilder mockRequest = put("/fantasyteams/update/1").content(testTeamsAsJSON)
 				.contentType(MediaType.APPLICATION_JSON);
 		
-		this.mvc.perform(mockRequest).andExpect(status().isOk()).andExpect(content().json(testTeamsAsJSON));
+		this.mvc.perform(mockRequest).andExpect(status().isOk()).andExpect(content().json(updatedDTOAsJSON));
 	}
 	
 	@Test

@@ -101,6 +101,9 @@ document.getElementById("createPlayer").addEventListener("submit", function (eve
 
 document.getElementById("updatePlayer").addEventListener("submit", function (event) {
     event.preventDefault();
+    let updateModal = document.getElementById('uPlayerModal');
+    let modal = bootstrap.Modal.getInstance(updateModal);
+    modal.hide();
 
     const playerID = document.getElementById("updatePlayerButton").getAttribute("playerID")
     const data = {
